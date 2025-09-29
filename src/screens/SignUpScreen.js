@@ -11,7 +11,7 @@ import {fonts} from '../theme/font';
 
 const SignUpScreen = () => {
   return (
-    <ScreenBoiler headerType={1} headerTitle="Back">
+    <ScreenBoiler headerType={2} headerTitle="Back">
       <CustomText style={styles.heading}>
         Get Started With
         <CustomText style={{color: colors?.secondary}}>

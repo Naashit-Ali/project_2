@@ -60,7 +60,6 @@ const ScreenBoiler = ({
       behavior={behavior}
       keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}>
       <CustomStatusBar {...statusBarProps} />
-      <MainHeader type={headerType} title={headerTitle} />
       <Wrapper
         style={{
           flex: 1,
@@ -70,6 +69,9 @@ const ScreenBoiler = ({
           source: backgroundImage,
           resizeMode: 'cover',
         })}>
+          <MainHeader type={headerType} title={headerTitle}
+
+          />
         {content}
       </Wrapper>
     </KeyboardAvoidingView>

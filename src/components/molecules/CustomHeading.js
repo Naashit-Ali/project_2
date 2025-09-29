@@ -5,12 +5,12 @@ import { colors } from '../../theme/colors';
 import { fonts } from '../../theme/font';
 import CustomText from '../atoms/CustomText';
 
-const CustomHeading = ({ title, rightText, onPress, style}) => {
+const CustomHeading = ({ title, rightText, onPress, style }) => {
     const { width, height } = useWindowDimensions();
     const styles = customStyleSheet(width, height);
-    
+
     return (
-        <View style={[styles.container,style]}>
+        <View style={[styles.container, style]}>
             <CustomText style={styles?.heading}>
                 {title}
             </CustomText>
@@ -34,13 +34,13 @@ const customStyleSheet = (width, height) => StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginVertical: moderateScale(10, 0.3),
-        paddingHorizontal:moderateScale(20,0.3)
+        // paddingHorizontal: moderateScale(20, 0.3)
     },
     heading: {
-        fontSize: moderateScale(18, 0.3),
-        color: colors?.white,
+        fontSize: moderateScale(24, 0.3),
+        color: colors?.themeBlack,
         flex: 1,
-        fontFamily: fonts?.medium
+        fontFamily: fonts?.bold
     },
     rightContainer: {
         flexDirection: 'row',

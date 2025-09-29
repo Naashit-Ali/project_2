@@ -6,6 +6,7 @@ import WelcomeScreen from '../screens/WelcomeScreen';
 import NavigationService from './NavigationService';
 import SignUpScreen from '../screens/SignUpScreen';
 import HomeScreen from '../screens/HomeScreen';
+import ProfileSetupScreen from '../screens/ProfileSetupScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,13 +15,14 @@ const AppNavigation = () => {
     SplashScreen,
     WelcomeScreen,
     SignUpScreen,
-    HomeScreen
+    HomeScreen,
+    ProfileSetupScreen,
         // BottomNavigation,
   };
   return (
     <NavigationContainer ref={NavigationService.navigationRef}>
       <Stack.Navigator
-        initialRouteName="HomeScreen"
+        initialRouteName="ProfileSetupScreen"
         screenOptions={{
           headerShown: false, // hide headers globally (optional)
         }}>
