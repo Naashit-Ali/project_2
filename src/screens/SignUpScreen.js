@@ -8,6 +8,7 @@ import SocialLoginButton from '../components/molecules/SocialLoginButton';
 import ScreenBoiler from '../components/skeleton/ScreenBoiler';
 import {colors} from '../theme/colors';
 import {fonts} from '../theme/font';
+import NavigationService from '../navigation/NavigationService';
 
 const SignUpScreen = () => {
   return (
@@ -23,7 +24,11 @@ const SignUpScreen = () => {
       <CustomTextInput placeholder="Email" />
       <CustomTextInput placeholder="Password" secureText />
       <CustomTextInput placeholder="Confirm Password" secureText />
-      <CustomButton title={'Sign Up '} />
+      <CustomButton title={'Sign Up '}
+        onPress={() => {
+          NavigationService?.navigate('ProfileSetupScreen');
+        }}
+      />
       <View
         style={{
           flexDirection: 'row',

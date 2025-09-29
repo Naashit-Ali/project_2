@@ -10,6 +10,7 @@ import ScreenBoiler from '../components/skeleton/ScreenBoiler'
 import { colors } from '../theme/colors'
 import { fonts } from '../theme/font'
 import CustomDropdown from '../components/organisms/CustomDropdown'
+import NavigationService from '../navigation/NavigationService'
 
 const ProfileSetupScreen = () => {
   return (
@@ -44,6 +45,9 @@ const ProfileSetupScreen = () => {
 
       <CustomButton
         title={`Let's Go!`}
+        onPress={() => {
+          NavigationService?.navigate('BottomNavigation');
+        }}
       />
 
     </ScreenBoiler>
