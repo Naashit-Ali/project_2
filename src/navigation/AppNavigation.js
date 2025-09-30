@@ -25,7 +25,7 @@ const AppNavigation = () => {
   return (
     <NavigationContainer ref={NavigationService.navigationRef}>
       <Stack.Navigator
-        initialRouteName="SubscriptionScreen"
+        initialRouteName="BottomNavigation"
         screenOptions={{
           headerShown: false, // hide headers globally (optional)
         }}>

@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { colors } from '../../theme/colors'
 import { moderateScale } from 'react-native-size-matters'
@@ -7,6 +7,7 @@ import CustomText from '../atoms/CustomText'
 import { fonts } from '../../theme/font'
 import Images from '../../assets/images'
 import CustomImage from '../atoms/CustomImage'
+import NavigationService from '../../navigation/NavigationService'
 
 const WorkoutCard = () => {
 
@@ -19,7 +20,9 @@ const WorkoutCard = () => {
         )
     }
     return (
-        <View style={styles.container}>
+        <TouchableOpacity 
+        onPress={() => {NavigationService?.navigate('SubscriptionScreen')}}
+        style={styles.container}>
             <View style={{
                 overflow: 'hidden',
                 borderRadius: moderateScale(10, 0.3),
@@ -53,7 +56,7 @@ const WorkoutCard = () => {
                     />
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 

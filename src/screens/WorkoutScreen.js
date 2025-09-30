@@ -51,9 +51,9 @@ const WorkoutScreen = () => {
 
   return (
     <ScreenBoiler
-    containerStyle={{
-      // backgroundColor:'red'
-    }}
+      containerStyle={{
+        // backgroundColor:'red'
+      }}
       scrollEnabled
       wrapperContainerStyle={{
         paddingHorizontal: moderateScale(5, 0.3),
@@ -120,7 +120,7 @@ const WorkoutScreen = () => {
                 ]}
               >
                 <CustomText style={styles.exerciseText}>{exercise}</CustomText>
-               
+
               </TouchableOpacity>
             ))}
           </View>
@@ -132,20 +132,20 @@ const WorkoutScreen = () => {
             padding: moderateScale(12, 0.3),
             borderRadius: moderateScale(6, 0.3),
           }}>
-          <CustomText style={styles.yourPlanTitle}>Your Plan</CustomText>
+            <CustomText style={styles.yourPlanTitle}>Your Plan</CustomText>
 
-          <View style={styles.planList}>
-            {yourPlan.map((item, index) => (
-              <View key={index} style={styles.planItem}>
-                <CustomText style={styles.planItemText}>{item.name}</CustomText>
-                <CustomText style={styles.planItemText}>{item.sets} X {item.reps}</CustomText>
-              </View>
-            ))}
-          </View>
+            <View style={styles.planList}>
+              {yourPlan.map((item, index) => (
+                <View key={index} style={styles.planItem}>
+                  <CustomText style={styles.planItemText}>{item.name}</CustomText>
+                  <CustomText style={styles.planItemText}>{item.sets} X {item.reps}</CustomText>
+                </View>
+              ))}
+            </View>
 
-          <CustomButton
-          title={'Save Plan'}
-          />
+            <CustomButton
+              title={'Save Plan'}
+            />
 
           </View>
         </View>
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     marginBottom: moderateScale(30, 0.3),
     alignItems: 'center',
     // justifyContent: 'space-between',
-    justifyContent:'center'
+    justifyContent: 'center'
   },
   exerciseCard: {
     width: '30%',
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
   exerciseText: {
     fontSize: moderateScale(14, 0.3),
     color: colors?.gray,
-    fontFamily : fonts?.regular
+    fontFamily: fonts?.regular
   },
   yourPlanTitle: {
     fontSize: moderateScale(18, 0.3),
