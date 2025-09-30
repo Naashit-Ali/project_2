@@ -6,6 +6,25 @@ const Images = {
     google: require('./google.png'),
     facebook: require('./facebook.png'),
     insta: require('./insta.png'),
+    home: require('./home.png'),
+    homeFilled: require('./home-fill.png'),
+    dumbbell: require('./dumbbell.png'),
+    dumbbellFilled: require('./dumbbell-fill.png'),
+    sparkles: require('./sparkles.png'),
+    sparklesFilled: require('./sparkles-fill.png'),
+    calendar: require('./calendar.png'),
+    calendarFilled: require('./calendar-fill.png'),
+    meal: require('./vegetarian-food.png'),
+    mealFilled: require('./vegetarian-food-fill.png'),
+    clock: require('./clock.png'),
+    search: require('./search.png'),
+    filter: require('./filter.png'),
+    notification: require('./notification.png'),
+    fire: require('./fire.png'),
+    settings: require('./setting.png'),
+    menu: require('./menu.png'),
+    user: require('./user.png'),
+
 };
 
 export default Images;

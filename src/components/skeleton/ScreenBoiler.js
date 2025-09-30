@@ -21,6 +21,7 @@ const ScreenBoiler = ({
   containerStyle,
   headerType,
   headerTitle = '',
+  wrapperContainerStyle,
 }) => {
   const Wrapper = backgroundImage ? ImageBackground : View;
 
@@ -59,19 +60,18 @@ const ScreenBoiler = ({
       style={{flex: 1, backgroundColor: colors?.white}}
       behavior={behavior}
       keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}>
-      <CustomStatusBar {...statusBarProps} />
+      {/* <CustomStatusBar {...statusBarProps} /> */}
       <Wrapper
-        style={{
+        style={[{
           flex: 1,
           paddingHorizontal: moderateScale(24,0.3),
-        }}
+        }, wrapperContainerStyle]
+      }
         {...(backgroundImage && {
           source: backgroundImage,
           resizeMode: 'cover',
         })}>
-          <MainHeader type={headerType} title={headerTitle}
-
-          />
+          {/* <MainHeader type={headerType} title={headerTitle}/> */}
         {content}
       </Wrapper>
     </KeyboardAvoidingView>

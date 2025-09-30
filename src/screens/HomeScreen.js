@@ -6,6 +6,7 @@ import MainHeader from '../components/organisms/MainHeader';
 import CustomHeading from '../components/molecules/CustomHeading';
 import TextPill from '../components/organisms/TextPill';
 import SearchBar from '../components/molecules/SearchBar';
+import WorkoutCard from '../components/organisms/WorkoutCard';
 const { width, height } = Dimensions.get("window");
 
 
@@ -47,7 +48,7 @@ const HomeScreen = () => {
                   /> */}
                   
                   <MainHeader />
-      <CustomHeading
+      {/* <CustomHeading
       title={ 'Home'}
       />
 
@@ -69,8 +70,63 @@ const HomeScreen = () => {
           />
         ))}
       </ScrollView>
-
       <SearchBar/>
+      <WorkoutCard/> */}
+      <PostCard
+        post={{
+          user: {
+            avatar: 'https://example.com/avatar.jpg',
+            username: 'John Doe',
+          },
+          content: 'This is a sample post content',
+          media: [
+            {
+              uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQby7FxM4LwRdj1cafv66KUGmCVWIAuORa3Lbd-5AW8buWQyt_x53icbLNWq3ERq0Glz58&usqp=CAU',
+              type: 'image',
+            },
+            {
+              uri: 'https://www.w3schools.com/html/mov_bbb.mp4',
+              type: 'video',
+              // thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQby7FxM4LwRdj1cafv66KUGmCVWIAuORa3Lbd-5AW8buWQyt_x53icbLNWq3ERq0Glz58&usqp=CAU',
+            },
+            {
+              uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQby7FxM4LwRdj1cafv66KUGmCVWIAuORa3Lbd-5AW8buWQyt_x53icbLNWq3ERq0Glz58&usqp=CAU',
+              type: 'image',
+            },
+            {
+              uri: 'https://row.gymshark.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2F8urtyqugdt2l%2F1oIrMoqckYTE96ekt5ECyT%2F51471e1e09c39541c1564bc164bd9b06%2Fdesktop-how-often-to-go-to-the-gym.jpg&w=3840&q=85',
+              type: 'image',
+            },
+            {
+              uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQby7FxM4LwRdj1cafv66KUGmCVWIAuORa3Lbd-5AW8buWQyt_x53icbLNWq3ERq0Glz58&usqp=CAU',
+              type: 'image',
+            },
+            {
+              uri: 'https://row.gymshark.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2F8urtyqugdt2l%2F1oIrMoqckYTE96ekt5ECyT%2F51471e1e09c39541c1564bc164bd9b06%2Fdesktop-how-often-to-go-to-the-gym.jpg&w=3840&q=85',
+              type: 'video',
+            },
+          ],
+          likes: [
+            {avatar: 'https://example.com/avatar1.jpg', username: 'You'},
+            {avatar: 'https://example.com/avatar2.jpg', username: 'John'},
+            {avatar: 'https://example.com/avatar1.jpg', username: 'User1'},
+            {avatar: 'https://example.com/avatar2.jpg', username: 'User2'},
+          ],
+          comments: [
+            {
+              user: {
+                avatar: 'https://example.com/avatar3.jpg',
+                username: 'User3',
+              },
+              text: 'Nice post!',
+            },
+          ],
+          timestamp: '2h ago',
+        }}
+        onComment={() => console.log('Comment Pressed')}
+      />
+
+
     </View>
   )
 }
@@ -82,6 +138,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "#000",
     justifyContent: "center",
     alignItems: "center",
+    padding: 10,
   },
   backgroundVideo: {
     width: '100%',

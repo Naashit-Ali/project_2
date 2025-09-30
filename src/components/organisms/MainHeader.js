@@ -22,19 +22,17 @@ const MainHeader = ({
 
   const iconImage = () => {
     if (isSetting) {
-      return Images?.setting;
+      return Images?.search;
     } else if (isMenu) {
       return Images?.menu;
     } else {
-      return Images?.arrowLeft;
+      return Images?.notification;
     }
   }
 
   // const onPressBack = () => {
   //   NavigationService?.goBack()
   // }
-
-
 
   return (
   type == 1 ? <>  <View style={styles.container}>
@@ -57,7 +55,7 @@ const MainHeader = ({
       <>
         <View style={styles?.profileContainer}>
           <CustomImage
-            source={Images?.facebook}
+            source={Images?.user}
             resizeMode="cover"
             style={styles?.image}
           />
@@ -78,15 +76,14 @@ const MainHeader = ({
         style={{
           width: moderateScale(16, 0.3),
           height: moderateScale(16, 0.3),
-
         }}
       />
       <View style={styles?.notificationBadge}>
         <CustomText style={styles?.text3}>2</CustomText></View>
     </TouchableOpacity>
 
-  </View></> : <>
-  
+  </View></> : 
+  <>
       <View
         style={{
           width: '100%',
@@ -94,6 +91,7 @@ const MainHeader = ({
           alignItems: 'center',
           paddingVertical: moderateScale(10, 0.3),
           gap: moderateScale(5, 0.3),
+
         }}>
           <CustomImage
           isPressable
@@ -144,13 +142,12 @@ const styles = StyleSheet.create({
     width: moderateScale(40, 0.3),
     height: moderateScale(40, 0.3),
     borderRadius: moderateScale(50, 0.3),
+    backgroundColor: colors?.lightGray
   },
   text3: {
-
     color: colors?.white,
     fontSize: moderateScale(12, 0.3),
     fontFamily: fonts?.bold,
-
   },
   notificationBadge: {
     position: 'absolute',
@@ -166,7 +163,8 @@ const styles = StyleSheet.create({
   },
   rightIconContainer: {
     padding: moderateScale(10, 0.3),
-    backgroundColor: colors?.secondary, borderRadius: moderateScale(50, 0.3),
+    backgroundColor: colors?.secondary,
+     borderRadius: moderateScale(50, 0.3),
     alignItems: 'center',
     justifyContent: 'center',
   },

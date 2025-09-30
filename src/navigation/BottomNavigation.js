@@ -87,42 +87,42 @@ const TabBarIcon = ({ focused, iconFocused, iconUnfocused, label }) => {
 };
 
 const BottomNavigation = () => {
-  const { user } = useSelector((state) => state?.authReducer);
+  // const { user } = useSelector((state) => state?.authReducer);
 
   const tabScreens = [
     {
       name: 'HomeScreen',
       component: HomeScreen,
-      iconFocused: Images.facebook,
-      iconUnfocused: Images.facebook,
+      iconFocused: Images.homeFilled,
+      iconUnfocused: Images.home,
       label: 'Home',
     },
     {
       name: 'WorkoutScreen',
       component: WorkoutScreen,
-      iconFocused: Images.facebook,
-      iconUnfocused: Images.facebook,
+      iconFocused: Images.dumbbellFilled,
+      iconUnfocused: Images.dumbbell,
       label: 'Workout',
     },
     {
       name: 'MealScreen',
       component: MealScreen,
-      iconFocused: Images.facebook,
-      iconUnfocused: Images.facebook,
+      iconFocused: Images.mealFilled,
+      iconUnfocused: Images.meal,
       label: 'Meal',
     },
     {
       name: 'MindsetScreen',
       component: MindsetScreen,
-      iconFocused: Images.facebook,
-      iconUnfocused: Images.facebook,
+      iconFocused: Images.sparklesFilled,
+      iconUnfocused: Images.sparkles,
       label: 'Mindset',
     },
     {
       name: 'EventScreen',
       component: EventScreen,
-      iconFocused: Images.facebook,
-      iconUnfocused: Images.facebook,
+      iconFocused: Images.calendarFilled,
+      iconUnfocused: Images.calendar,
       label: 'Event',
     },
   ];
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
   pillBackground: {
     position: 'absolute',
     height: moderateScale(42, 0.3),
-    backgroundColor: colors?.secondary,
+    backgroundColor: colors?.secondaryV2,
     borderRadius: moderateScale(25, 0.3),
   },
   iconContent: {

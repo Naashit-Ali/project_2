@@ -22,7 +22,6 @@ const CustomHeading = ({ title, rightText, onPress, style }) => {
                 <CustomText style={styles?.rightHeading}>View All</CustomText>
                 <CustomText style={styles?.rightHeadingIcon}>{'>'}</CustomText>
             </TouchableOpacity>}
-
         </View>
     )
 }
@@ -40,7 +39,7 @@ const customStyleSheet = (width, height) => StyleSheet.create({
         fontSize: moderateScale(24, 0.3),
         color: colors?.themeBlack,
         flex: 1,
-        fontFamily: fonts?.bold
+        fontFamily: fonts?.medium
     },
     rightContainer: {
         flexDirection: 'row',

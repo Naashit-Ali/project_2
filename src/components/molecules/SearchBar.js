@@ -15,11 +15,10 @@ const SearchBar = ({
   return (
     <View style={styles.container}>
 
-      <Icon
-        name='search'
-        as={AntDesign}
-        size={moderateScale(16, 0.3)}
-        color={colors?.grayV2}
+      <CustomImage
+        source={Images?.search}
+        style={styles?.filter}
+        resizeMode='contain'
       />
 
       <TextInput
@@ -31,7 +30,7 @@ const SearchBar = ({
       />
 
       <CustomImage
-        source={Images?.facebook}
+        source={Images?.filter}
         style={styles?.filter}
         resizeMode='contain'
       />
@@ -58,8 +57,8 @@ const styles = StyleSheet.create({
     fontFamily: fonts?.regular
   },
   filter: {
-    width: moderateScale(30, 0.3),
-    height: moderateScale(30, 0.3),
+    width: moderateScale(24, 0.3),
+    height: moderateScale(24, 0.3),
   }
 })
 

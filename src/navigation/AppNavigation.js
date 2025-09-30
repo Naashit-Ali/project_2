@@ -8,6 +8,7 @@ import SignUpScreen from '../screens/SignUpScreen';
 import HomeScreen from '../screens/HomeScreen';
 import ProfileSetupScreen from '../screens/ProfileSetupScreen';
 import BottomNavigation from './BottomNavigation';
+import SubscriptionScreen from '../screens/SubscriptionScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,12 +20,12 @@ const AppNavigation = () => {
     HomeScreen,
     ProfileSetupScreen,
     BottomNavigation,
-        // BottomNavigation,
+    SubscriptionScreen,
   };
   return (
     <NavigationContainer ref={NavigationService.navigationRef}>
       <Stack.Navigator
-        initialRouteName="SplashScreen"
+        initialRouteName="SubscriptionScreen"
         screenOptions={{
           headerShown: false, // hide headers globally (optional)
         }}>
