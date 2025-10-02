@@ -10,6 +10,7 @@ import { colors } from '../theme/colors'
 import ProgressCard from '../components/organisms/ProgressCard'
 import CustomText from '../components/atoms/CustomText'
 import IngredientCard from '../components/organisms/IngredientCard'
+import CustomButton from '../components/atoms/CustomButton'
 
 const MealDetail = () => {
     return (
@@ -67,7 +68,25 @@ const MealDetail = () => {
                 ]}
             >Ingredients</CustomText>
 
-            <IngredientCard/>
+            <View style={{
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+                width: '100%',
+                alignItems: 'center',
+                gap: moderateScale(12, 0.3),
+            }}>
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, index) => (
+                    <IngredientCard key={index} />
+                ))}
+
+            </View>
+
+            <CustomButton
+                title={'Save Recipe'}
+                style={{
+                    marginTop: moderateScale(30, 0.3),
+                }}
+            />
 
 
         </ScreenBoiler>

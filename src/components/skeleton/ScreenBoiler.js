@@ -33,6 +33,7 @@ const ScreenBoiler = ({
             {
               flexGrow: 1,
               backgroundColor: backgroundImage ? undefined : backgroundColor,
+              paddingBottom: moderateScale(20, 0.3),
             },
             containerStyle,
           ]}
@@ -59,6 +60,7 @@ const ScreenBoiler = ({
     <KeyboardAvoidingView
       style={{flex: 1, backgroundColor: colors?.white}}
       behavior={behavior}
+    
       keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}>
       {/* <CustomStatusBar {...statusBarProps} /> */}
       <Wrapper

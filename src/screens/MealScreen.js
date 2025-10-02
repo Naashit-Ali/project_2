@@ -17,16 +17,10 @@ import CustomTextInput from '../components/atoms/CustomTextInput'
 import MealCard from '../components/organisms/MealCard'
 
 const MealScreen = () => {
-   const myTabs = [
-      { label: 'Meal Recipes', value: 'MealRecipes' },
-      { label: 'Macro Calculator', value: 'MacroCalculator' }
-    ];
-    const [selectedPill, setSelectedPill] = useState(0);
-    const [activeTab, setActiveTab] = useState('MealRecipes');
 
-  const handleTabChange = tab => {
-    setActiveTab(tab);
-  };
+    const [selectedPill, setSelectedPill] = useState(0);
+
+
   return (
    <ScreenBoiler
       containerStyle={{
@@ -39,14 +33,7 @@ const MealScreen = () => {
     >
       <MainHeader type={1} />
 
-      <Tab
-        data={myTabs}
-        activeTab={activeTab}
-        onTabChange={handleTabChange}
-      />
-
-      {activeTab === 'MealRecipes' ? (
-        <>
+    
           <CustomHeading title={'Meal'} />
 
           <ScrollView
@@ -83,54 +70,8 @@ const MealScreen = () => {
               marginTop: moderateScale(10, 0.3),
             }}
           />
-        </>
-      ) : (
-        <View style={styles.customWorkoutContainer}>
-          <CustomHeading title={'Macro Calculator'} />
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{
-              alignItems: 'center',
-              gap: 10,
-              width: '100%',
-            }}
-            style={{
-              maxHeight: moderateScale(50, 0.3),
-              width: '100%',
-              marginBottom: moderateScale(20, 0.3)
-            }}
-          >
-            {macroData.map((item, index) => (
-              <TextPill
-                key={index}
-                title={item.label}
-                isSelected={selectedPill == index}
-                id={index}
-                onPress={() => setSelectedPill(index)}
-              />
-            ))}
-          </ScrollView>
 
-          <CustomTextInput
-          placeholder='Weight (kg)'
-          placeholderColor={colors?.grayV2}
-          />
-          <CustomTextInput
-          placeholder='Height (cm)'
-          placeholderColor={colors?.grayV2}
-          />
-          <CustomTextInput
-          placeholder='Age'
-          placeholderColor={colors?.grayV2} 
-          />
-          <CustomButton
-          title={'Search'}
-          />
-
-         
-        </View>
-      )}
+     
     </ScreenBoiler>
   );
 };

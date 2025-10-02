@@ -30,9 +30,6 @@ const MainHeader = ({
     }
   }
 
-  // const onPressBack = () => {
-  //   NavigationService?.goBack()
-  // }
 
   return (
   type == 1 ? <>  <View style={styles.container}>
@@ -43,8 +40,10 @@ const MainHeader = ({
         }}
         style={styles?.backIconContainer}>
         <CustomImage
+          onPress={() => {
+            NavigationService?.goBack();
+          }}
           isPressable
-          onPress={onPressBack}
           source={Images?.arrowLeft}
           resizeMode="contain"
           style={{
