@@ -9,6 +9,7 @@ import HomeScreen from '../screens/HomeScreen';
 import ProfileSetupScreen from '../screens/ProfileSetupScreen';
 import BottomNavigation from './BottomNavigation';
 import SubscriptionScreen from '../screens/SubscriptionScreen';
+import MealDetail from '../screens/MealDetail';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,7 @@ const AppNavigation = () => {
     ProfileSetupScreen,
     BottomNavigation,
     SubscriptionScreen,
+    MealDetail,
   };
   return (
     <NavigationContainer ref={NavigationService.navigationRef}>

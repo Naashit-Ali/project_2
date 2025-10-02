@@ -39,7 +39,7 @@ const MainHeader = ({
     {isBack ?
       <TouchableOpacity
         onPress={() => {
-          onPressBack()
+          NavigationService?.goBack();
         }}
         style={styles?.backIconContainer}>
         <CustomImage

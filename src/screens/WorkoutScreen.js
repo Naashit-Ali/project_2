@@ -41,13 +41,6 @@ const WorkoutScreen = () => {
     setActiveTab(tab);
   };
 
-  const toggleExercise = (exercise) => {
-    if (selectedExercises.includes(exercise)) {
-      setSelectedExercises(selectedExercises.filter(e => e !== exercise));
-    } else {
-      setSelectedExercises([...selectedExercises, exercise]);
-    }
-  };
 
   return (
     <ScreenBoiler
