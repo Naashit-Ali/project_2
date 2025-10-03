@@ -10,6 +10,7 @@ import ProfileSetupScreen from '../screens/ProfileSetupScreen';
 import BottomNavigation from './BottomNavigation';
 import SubscriptionScreen from '../screens/SubscriptionScreen';
 import MealDetail from '../screens/MealDetail';
+import WorkoutDetailScreen from '../screens/WorkoutDetailScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,11 +24,12 @@ const AppNavigation = () => {
     BottomNavigation,
     SubscriptionScreen,
     MealDetail,
+    WorkoutDetailScreen
   };
   return (
     <NavigationContainer ref={NavigationService.navigationRef}>
       <Stack.Navigator
-        initialRouteName="BottomNavigation"
+        initialRouteName="WorkoutDetailScreen"
         screenOptions={{
           headerShown: false, // hide headers globally (optional)
         }}>

@@ -7,6 +7,7 @@ import CustomHeading from '../components/molecules/CustomHeading';
 import TextPill from '../components/organisms/TextPill';
 import SearchBar from '../components/molecules/SearchBar';
 import WorkoutCard from '../components/organisms/WorkoutCard';
+import CommunityCard from '../components/organisms/CommunityCard';
 const { width, height } = Dimensions.get("window");
 
 
@@ -72,7 +73,7 @@ const HomeScreen = () => {
       </ScrollView>
       <SearchBar/>
       <WorkoutCard/> */}
-      <PostCard
+      {/* <PostCard
         post={{
           user: {
             avatar: 'https://example.com/avatar.jpg',
@@ -125,8 +126,9 @@ const HomeScreen = () => {
         }}
         onComment={() => console.log('Comment Pressed')}
       />
+       */}
 
-
+<CommunityCard/>
     </View>
   )
 }

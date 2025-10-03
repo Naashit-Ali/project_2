@@ -70,7 +70,6 @@ const WorkoutScreen = () => {
             contentContainerStyle={{
               alignItems: 'center',
               gap: 10,
-              width: '100%',
             }}
             style={{
               maxHeight: moderateScale(50, 0.3),

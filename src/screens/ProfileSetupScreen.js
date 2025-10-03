@@ -34,7 +34,9 @@ const ProfileSetupScreen = () => {
       </View>
 
       <CustomTextInput placeholder="Username" />
-      <CustomTextInput placeholder="Bio" inputStyle={{
+      <CustomTextInput placeholder="Bio"
+      multiline
+      inputStyle={{
         height: moderateScale(100, 0.3),
         textAlignVertical: 'top',
       }} />
