@@ -12,7 +12,6 @@ const MainHeader = ({
   isBack = false,
   isMenu = false,
   isSetting = false,
-  onPress,
   type =1,
   title = '',
   onPressBack,
@@ -67,7 +66,15 @@ const MainHeader = ({
       </>
     }
     <TouchableOpacity
-      onPress={onPress}
+      onPress={()  => {
+        if (isSetting) {
+          NavigationService?.navigate('SettingScreen');
+        } else if (isMenu) {
+          NavigationService?.navigate('EditProfileScreen');
+        } else {
+          NavigationService?.navigate('NotificationScreen');
+        }
+      }}
       style={styles?.rightIconContainer}>
       <CustomImage
         source={iconImage()}
@@ -77,8 +84,8 @@ const MainHeader = ({
           height: moderateScale(16, 0.3),
         }}
       />
-      <View style={styles?.notificationBadge}>
-        <CustomText style={styles?.text3}>2</CustomText></View>
+     {!isSetting && !isMenu && <View style={styles?.notificationBadge}>
+        <CustomText style={styles?.text3}>2</CustomText></View>}
     </TouchableOpacity>
 
   </View></> : 

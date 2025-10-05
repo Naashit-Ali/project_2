@@ -19,8 +19,7 @@ const CustomHeading = ({ title, rightText, onPress, style }) => {
                 onPress={onPress}
                 style={styles?.rightContainer}>
 
-                <CustomText style={styles?.rightHeading}>View All</CustomText>
-                <CustomText style={styles?.rightHeadingIcon}>{'>'}</CustomText>
+                <CustomText style={styles?.rightHeading}>{rightText}</CustomText>
             </TouchableOpacity>}
         </View>
     )
@@ -33,7 +32,6 @@ const customStyleSheet = (width, height) => StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginVertical: moderateScale(10, 0.3),
-        // paddingHorizontal: moderateScale(20, 0.3)
     },
     heading: {
         fontSize: moderateScale(24, 0.3),
@@ -48,15 +46,10 @@ const customStyleSheet = (width, height) => StyleSheet.create({
     },
     rightHeading: {
         fontSize: moderateScale(14, 0.3),
-        color: colors?.white,
-        fontFamily: fonts?.regular
-    },
-    rightHeadingIcon: {
-        fontSize: moderateScale(14, 0.3),
         color: colors?.primary,
-        fontFamily: fonts?.regular
+        fontFamily: fonts?.medium
+    },
 
-    }
 
 })
 

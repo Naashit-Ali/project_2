@@ -45,7 +45,6 @@ const WorkoutScreen = () => {
   return (
     <ScreenBoiler
       containerStyle={{
-        // backgroundColor:'red'
       }}
       scrollEnabled
       wrapperContainerStyle={{
@@ -125,7 +124,7 @@ const WorkoutScreen = () => {
             borderRadius: moderateScale(6, 0.3),
           }}>
             <CustomText style={styles.yourPlanTitle}>Your Plan</CustomText>
-
+            
             <View style={styles.planList}>
               {yourPlan.map((item, index) => (
                 <View key={index} style={styles.planItem}>

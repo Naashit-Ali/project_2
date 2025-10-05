@@ -12,7 +12,8 @@ const CustomDropdown = ({
     value,
     setValue,
     placeholder,
-    errorText
+    errorText,
+    style,
 }) => {
     const { width, height } = useWindowDimensions();
     const styles = customStyleSheet(width, height);
@@ -20,7 +21,7 @@ const CustomDropdown = ({
     return (
         <View style={styles?.container}>
             <Dropdown
-                style={styles?.dropdown}
+                style={[styles?.dropdown, style]}
                 data={data}
                 selectedTextStyle={styles?.textStyle}
                 labelField="label"
@@ -41,18 +42,14 @@ const CustomDropdown = ({
 
 const customStyleSheet = (width, height) => StyleSheet.create({
     container: {
-        width: '100%',
     },
     dropdown: {
         width: '100%',
         borderWidth: 1,
         borderColor: colors?.lightGrayV2,
         borderRadius: moderateScale(6, 0.3),
-        paddingHorizontal: moderateScale(20, 0.3),
+        paddingHorizontal: moderateScale(16, 0.3),
         paddingVertical: moderateScale(16, 0.3),
-              marginBottom: moderateScale(12, 0.3),
-
-
     },
     placeholderStyle: {
         fontSize: moderateScale(14, 0.3),
