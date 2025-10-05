@@ -11,29 +11,31 @@ import { colors } from '../theme/colors'
 import { fonts } from '../theme/font'
 import CustomDropdown from '../components/organisms/CustomDropdown'
 import NavigationService from '../navigation/NavigationService'
+import MainHeader from '../components/organisms/MainHeader'
 
-const ProfileSetupScreen = () => {
+const EditProfileScreen = () => {
   return (
     <ScreenBoiler headerType={2} headerTitle="Back">
-      <CustomText style={styles.heading}>
-        Profile Setup
-      </CustomText>
+    <MainHeader
+    isBack
+    />
 
       <View style={styles.profileImageContainer}>
 
         <CustomImage
-          source={Images?.logo}
+          source={Images?.user}
           style={styles?.profileImage}
           resizeMode="contain"
         />
-
-        <CustomText style={styles?.profileText}>
-          Maximize file size is 3MB
-        </CustomText>
-
+        <CustomImage
+        source={Images?.filter}
+        resizeMode='contain'
+        style={styles?.editIcon}
+        />
       </View>
 
-      <CustomTextInput placeholder="Username" />
+      <CustomTextInput placeholder="Fullname" />
+            <CustomTextInput placeholder="Username" />
       <CustomTextInput placeholder="Bio"
       multiline
       inputStyle={{
@@ -46,12 +48,10 @@ const ProfileSetupScreen = () => {
       />
 
       <CustomButton
-        title={`Let's Go!`}
-        style={{
-          marginTop: moderateScale(24, 0.3),
-        }}
+        title={`Save Changes`}
+        style={{marginTop: moderateScale(24, 0.3)}}
         onPress={() => {
-          NavigationService?.navigate('BottomNavigation');
+        //   NavigationService?.navigate('BottomNavigation');
         }}
       />
 
@@ -83,9 +83,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: moderateScale(24, 0.3),
-    width: '50%',
+    width: '30%',
     alignSelf: 'center',
+    marginTop: moderateScale(24, 0.3),
+  },
+  editIcon:{
+    position:'absolute',
+    bottom:5,
+    right:10,
+    width:moderateScale(30,0.3),
+    height:moderateScale(30,0.3),
   }
 });
 
-export default ProfileSetupScreen
+export default EditProfileScreen

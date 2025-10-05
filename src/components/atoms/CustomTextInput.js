@@ -34,6 +34,7 @@ const CustomTextInput = ({
   secondary,
   labelStyle,
   errorTxt,
+  multiline = false,
   ...rest
 }) => {
   const {width,height} = useWindowDimensions();
@@ -74,6 +75,7 @@ const CustomTextInput = ({
             setValue(text)
           }
           value={value}
+          multiline={multiline}
           secureTextEntry={secureText ? !showPassword : false}
           placeholder={placeholder !== 'Enter here...' ? placeholder : label}
           placeholderTextColor={
