@@ -1,31 +1,21 @@
-import { View, Text, StyleSheet, ScrollView, FlatList, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
-import ScreenBoiler from '../components/skeleton/ScreenBoiler'
+import { useState } from 'react'
+import { FlatList, ScrollView, StyleSheet } from 'react-native'
 import { moderateScale } from 'react-native-size-matters'
 import CustomHeading from '../components/molecules/CustomHeading'
-import TextPill from '../components/organisms/TextPill'
-import { macroData, mealData, workoutData } from '../utils/mockData'
 import SearchBar from '../components/molecules/SearchBar'
-import WorkoutCard from '../components/organisms/WorkoutCard'
 import MainHeader from '../components/organisms/MainHeader'
-import Tab from '../components/organisms/Tab'
-import CustomText from '../components/atoms/CustomText'
-import { colors } from '../theme/colors'
-import CustomButton from '../components/atoms/CustomButton'
-import { fonts } from '../theme/font'
-import CustomTextInput from '../components/atoms/CustomTextInput'
 import MealCard from '../components/organisms/MealCard'
+import TextPill from '../components/organisms/TextPill'
+import ScreenBoiler from '../components/skeleton/ScreenBoiler'
+import { colors } from '../theme/colors'
+import { fonts } from '../theme/font'
+import { mealData } from '../utils/mockData'
 
 const MealScreen = () => {
-
-    const [selectedPill, setSelectedPill] = useState(0);
-
-
+  const [selectedPill, setSelectedPill] = useState(0);
   return (
    <ScreenBoiler
-      containerStyle={{
-        // backgroundColor:'red'
-      }}
+    
       scrollEnabled
       wrapperContainerStyle={{
         paddingHorizontal: moderateScale(16, 0.3),

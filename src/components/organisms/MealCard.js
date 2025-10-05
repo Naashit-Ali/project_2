@@ -1,14 +1,11 @@
-import { Progress } from 'native-base'
-import React from 'react'
 import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import { moderateScale } from 'react-native-size-matters'
-import Images from '../../assets/images'
+import NavigationService from '../../navigation/NavigationService'
 import { colors } from '../../theme/colors'
 import { fonts } from '../../theme/font'
 import CustomImage from '../atoms/CustomImage'
 import CustomText from '../atoms/CustomText'
 import ProgressCard from './ProgressCard'
-import NavigationService from '../../navigation/NavigationService'
 
 const MealCard = () => {
 
