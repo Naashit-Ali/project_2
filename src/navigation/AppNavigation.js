@@ -19,6 +19,8 @@ import EditProfileScreen from '../screens/EditProfileScreen';
 import SavedMealsScreen from '../screens/SavedMealsScreen';
 import SavedWorkoutScreen from '../screens/SavedWorkoutScreen';
 import MyProgressScreen from '../screens/MyProgressScreen';
+import EventDetailScreen from '../screens/EventDetailScreen';
+import DemoScreen from '../screens/DemoScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -41,11 +43,13 @@ const AppNavigation = () => {
     SavedMealsScreen,
     SavedWorkoutScreen,
     MyProgressScreen,
+    EventDetailScreen,
+    DemoScreen,
   };
   return (
     <NavigationContainer ref={NavigationService.navigationRef}>
       <Stack.Navigator
-        initialRouteName="MyProgressScreen"
+        initialRouteName="DemoScreen"
         screenOptions={{
           headerShown: false, 
         }}>

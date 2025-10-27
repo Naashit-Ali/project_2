@@ -56,11 +56,9 @@ const MyProgressScreen = () => {
                 {/* Y-axis labels */}
                 <View style={styles.chartWrapper}>
                     <View style={styles.yAxis}>
-                        <CustomText style={styles.yAxisLabel}>1000</CustomText>
+                        <CustomText style={styles.yAxisLabel}>1200</CustomText>
                         <CustomText style={styles.yAxisLabel}>800</CustomText>
-                        <CustomText style={styles.yAxisLabel}>600</CustomText>
                         <CustomText style={styles.yAxisLabel}>400</CustomText>
-                        <CustomText style={styles.yAxisLabel}>200</CustomText>
                         <CustomText style={styles.yAxisLabel}>0</CustomText>
                     </View>
 
@@ -178,16 +176,9 @@ const styles = StyleSheet.create({
         width: '48%',
         padding: moderateScale(20, 0.3),
         borderRadius: moderateScale(8, 0.3),
-        backgroundColor: colors?.white || '#FFFFFF',
+        backgroundColor: colors?.white ,
         gap: moderateScale(6, 0.3),
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.05,
-        shadowRadius: 3,
-        elevation: 2,
+        boxShadow: '0px 1px 3px rgba(0, 0, 0, 0.1)',
     },
     cardHeader: {
         flexDirection: 'row',
@@ -201,34 +192,27 @@ const styles = StyleSheet.create({
     cardHeading: {
         fontFamily: fonts?.medium,
         fontSize: moderateScale(14, 0.3),
-        color: colors?.grayV2 || '#6B7280',
+        color: colors?.grayV2,
     },
     cardTitle: {
-        fontFamily: fonts?.semiBold || fonts?.medium,
-        fontSize: moderateScale(24, 0.3),
-        color: colors?.themeBlackV2 || '#1F2937',
+        fontFamily: fonts?.medium,
+        fontSize: moderateScale(18, 0.3),
+        color: colors?.themeBlackV2,
     },
     chartContainer: {
-        backgroundColor: colors?.white || '#FFFFFF',
+        backgroundColor: colors?.white,
         borderRadius: moderateScale(12, 0.3),
         padding: moderateScale(20, 0.3),
         marginBottom: moderateScale(20, 0.3),
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.05,
-        shadowRadius: 3,
-        elevation: 2,
+       boxShadow: '0px 1px 3px rgba(0, 0, 0, 0.1)',
     },
     chartHeader: {
         marginBottom: moderateScale(20, 0.3),
     },
     chartTitle: {
         fontFamily: fonts?.medium,
-        fontSize: moderateScale(16, 0.3),
-        color: colors?.themeBlackV2 || '#1F2937',
+        fontSize: moderateScale(18, 0.3),
+        color: colors?.themeBlackV2,
     },
     chartWrapper: {
         flexDirection: 'row',
@@ -243,8 +227,8 @@ const styles = StyleSheet.create({
     },
     yAxisLabel: {
         fontFamily: fonts?.regular,
-        fontSize: moderateScale(10, 0.3),
-        color: colors?.grayV2 || '#9CA3AF',
+        fontSize: moderateScale(12, 0.3),
+        color: colors?.grayV2,
     },
     barsContainer: {
         flex: 1,
@@ -266,7 +250,8 @@ const styles = StyleSheet.create({
     },
     barFill: {
         width: '100%',
-        borderRadius: moderateScale(4, 0.3),
+        borderTopLeftRadius: moderateScale(20, 0.3),
+        borderTopRightRadius: moderateScale(20, 0.3),
     },
     xAxis: {
         flexDirection: 'row',
@@ -279,37 +264,30 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontFamily: fonts?.regular,
         fontSize: moderateScale(12, 0.3),
-        color: colors?.grayV2 || '#6B7280',
+        color: colors?.grayV2,
     },
     challengeContainer: {
-        backgroundColor: colors?.white || '#FFFFFF',
+        backgroundColor: colors?.white,
         borderRadius: moderateScale(12, 0.3),
         padding: moderateScale(20, 0.3),
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.05,
-        shadowRadius: 3,
-        elevation: 2,
+        boxShadow: '0px 1px 3px rgba(0, 0, 0, 0.1)',
     },
     challengeMonth: {
         fontFamily: fonts?.regular,
         fontSize: moderateScale(12, 0.3),
-        color: colors?.grayV2 || '#9CA3AF',
+        color: colors?.grayV2,
         marginBottom: moderateScale(4, 0.3),
     },
-    challengeTitle: {
+    challengeTitle: {   
         fontFamily: fonts?.semiBold || fonts?.medium,
         fontSize: moderateScale(18, 0.3),
-        color: colors?.themeBlackV2 || '#1F2937',
+        color: colors?.themeBlackV2,
         marginBottom: moderateScale(4, 0.3),
     },
     challengeSubtitle: {
         fontFamily: fonts?.regular,
         fontSize: moderateScale(14, 0.3),
-        color: colors?.grayV2 || '#6B7280',
+        color: colors?.grayV2,
         marginBottom: moderateScale(16, 0.3),
     },
     progressBarContainer: {
@@ -318,13 +296,13 @@ const styles = StyleSheet.create({
     progressBarBackground: {
         width: '100%',
         height: moderateScale(8, 0.3),
-        backgroundColor: colors?.grayV4 || '#E5E7EB',
+        backgroundColor: colors?.grayV3,
         borderRadius: moderateScale(4, 0.3),
         overflow: 'hidden',
     },
     progressBarFill: {
         height: '100%',
-        backgroundColor: colors?.primary || '#8B5CF6',
+        backgroundColor: colors?.secondary,
         borderRadius: moderateScale(4, 0.3),
     },
 })

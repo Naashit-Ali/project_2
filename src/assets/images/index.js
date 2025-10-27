@@ -24,6 +24,7 @@ const Images = {
     settings: require('./setting.png'),
     menu: require('./menu.png'),
     user: require('./user.png'),
+    indicator: require('./indicator.png'),
 
 };
 
