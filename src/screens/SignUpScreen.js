@@ -26,7 +26,7 @@ const SignUpScreen = () => {
       <CustomTextInput placeholder="Confirm Password" secureText />
       <CustomButton title={'Sign Up '}
         onPress={() => {
-          NavigationService?.navigate('ProfileSetupScreen');
+          NavigationService?.navigate('InfoSteps');
         }}
       />
       <View

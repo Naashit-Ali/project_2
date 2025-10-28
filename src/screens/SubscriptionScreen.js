@@ -1,18 +1,19 @@
-import { View, StyleSheet, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
-import ScreenBoiler from '../components/skeleton/ScreenBoiler'
-import MainHeader from '../components/organisms/MainHeader'
-import { moderateScale } from 'react-native-size-matters'
-import CustomHeading from '../components/molecules/CustomHeading'
-import CustomButton from '../components/atoms/CustomButton'
-import { fonts } from '../theme/font'
-import { colors } from '../theme/colors'
-import { Icon } from 'native-base'
-import AntDesign from '@react-native-vector-icons/ant-design'
-import CustomText from '../components/atoms/CustomText'
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import ScreenBoiler from '../components/skeleton/ScreenBoiler';
+import MainHeader from '../components/organisms/MainHeader';
+import {moderateScale} from 'react-native-size-matters';
+import CustomHeading from '../components/molecules/CustomHeading';
+import CustomButton from '../components/atoms/CustomButton';
+import {fonts} from '../theme/font';
+import {colors} from '../theme/colors';
+import {Icon} from 'native-base';
+import AntDesign from '@react-native-vector-icons/ant-design';
+import CustomText from '../components/atoms/CustomText';
+import NavigationService from '../navigation/NavigationService';
 
 const SubscriptionScreen = () => {
-  const [selectedPlan, setSelectedPlan] = useState('yearly')
+  const [selectedPlan, setSelectedPlan] = useState('yearly');
 
   const plans = [
     {
@@ -21,38 +22,36 @@ const SubscriptionScreen = () => {
       description: 'Include sharing friends and family',
       originalPrice: '$60.99/Year',
       discountedPrice: '$30.99/Year',
-      save: 'For you 50% OFF'
+      save: 'For you 50% OFF',
     },
     {
       id: 'monthly',
       title: 'Monthly',
       description: 'Individual only',
-      price: '$16.99/Year'
-    }
-  ]
+      price: '$16.99/Year',
+    },
+  ];
 
   return (
     <ScreenBoiler
       containerStyle={{}}
       scrollEnabled
+      isBack
       wrapperContainerStyle={{
         paddingHorizontal: moderateScale(5, 0.3),
-      }}
-    >
-      <MainHeader type={1} isBack />
+      }}>
       <CustomHeading title={'Subscription'} />
 
       <View style={styles.plansContainer}>
-        {plans.map((plan) => (
+        {plans.map(plan => (
           <TouchableOpacity
             key={plan.id}
             style={[
               styles.planCard,
-              selectedPlan === plan.id && styles.selectedCard
+              selectedPlan === plan.id && styles.selectedCard,
             ]}
             onPress={() => setSelectedPlan(plan.id)}
-            activeOpacity={0.7}
-          >
+            activeOpacity={0.7}>
             {plan.save && selectedPlan === plan.id && (
               <View style={styles.saveBadge}>
                 <CustomText style={styles.saveText}>{plan.save}</CustomText>
@@ -60,55 +59,61 @@ const SubscriptionScreen = () => {
             )}
 
             <View style={styles.radioContainer}>
-              <View style={[
-                styles.radioOuter,
-                // selectedPlan === plan.id && styles.radioOuterSelected
-              ]}>
+              <View
+                style={[
+                  styles.radioOuter,
+                  // selectedPlan === plan.id && styles.radioOuterSelected
+                ]}>
                 {selectedPlan === plan.id && (
-                <Icon
-                as={AntDesign}
-                name="check-circle"
-                size={moderateScale(24, 0.3)}
-                color={colors?.secondaryV2}
-                />
+                  <Icon
+                    as={AntDesign}
+                    name="check-circle"
+                    size={moderateScale(24, 0.3)}
+                    color={colors?.secondaryV2}
+                  />
                 )}
               </View>
-              <CustomText style={[
-                styles.planTitle,
-                selectedPlan === plan.id && styles.selectedText
-              ]}>
+              <CustomText
+                style={[
+                  styles.planTitle,
+                  selectedPlan === plan.id && styles.selectedText,
+                ]}>
                 {plan.title}
               </CustomText>
             </View>
 
-            <CustomText style={[
-              styles.planDescription,
-              selectedPlan === plan.id && styles.selectedDescText
-            ]}>
+            <CustomText
+              style={[
+                styles.planDescription,
+                selectedPlan === plan.id && styles.selectedDescText,
+              ]}>
               {plan.description}
             </CustomText>
 
             <View style={styles.priceContainer}>
               {plan.discountedPrice ? (
                 <>
-                  <CustomText style={[
-                    styles.discountedPrice,
-                    selectedPlan === plan.id && styles.selectedText
-                  ]}>
+                  <CustomText
+                    style={[
+                      styles.discountedPrice,
+                      selectedPlan === plan.id && styles.selectedText,
+                    ]}>
                     {plan.discountedPrice}
                   </CustomText>
-                  <CustomText style={[
-                    styles.originalPrice,
-                    selectedPlan === plan.id && styles.selectedOriginalPrice
-                  ]}>
+                  <CustomText
+                    style={[
+                      styles.originalPrice,
+                      selectedPlan === plan.id && styles.selectedOriginalPrice,
+                    ]}>
                     {plan.originalPrice}
                   </CustomText>
                 </>
               ) : (
-                <CustomText style={[
-                  styles.regularPrice,
-                  selectedPlan === plan.id && styles.selectedText
-                ]}>
+                <CustomText
+                  style={[
+                    styles.regularPrice,
+                    selectedPlan === plan.id && styles.selectedText,
+                  ]}>
                   {plan.price}
                 </CustomText>
               )}
@@ -117,14 +122,16 @@ const SubscriptionScreen = () => {
         ))}
       </View>
 
-   <CustomButton
-   title={'Confirm'}style={{
-    marginTop: moderateScale(30, 0.3),
-   }}
-   />
+      <CustomButton
+        title={'Confirm'}
+        style={{
+          marginTop: moderateScale(30, 0.3),
+        }}
+        onPress={() => {}}
+      />
     </ScreenBoiler>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   plansContainer: {
@@ -187,7 +194,7 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(18, 0.3),
     fontWeight: '600',
     color: colors?.gray,
-    fontFamily : fonts?.medium
+    fontFamily: fonts?.medium,
   },
   selectedText: {
     color: colors?.themeBlack,
@@ -195,7 +202,7 @@ const styles = StyleSheet.create({
   planDescription: {
     fontSize: moderateScale(13, 0.3),
     color: colors?.gray,
-    fontFamily : fonts?.regular,
+    fontFamily: fonts?.regular,
     marginBottom: moderateScale(12, 0.3),
     // marginLeft: moderateScale(32, 0.3),
   },
@@ -210,13 +217,13 @@ const styles = StyleSheet.create({
   },
   discountedPrice: {
     fontSize: moderateScale(16, 0.3),
-    fontFamily : fonts?.medium,
+    fontFamily: fonts?.medium,
     color: colors?.gray,
   },
   originalPrice: {
     fontSize: moderateScale(16, 0.3),
     color: colors?.gray,
-    fontFamily : fonts?.medium,
+    fontFamily: fonts?.medium,
     textDecorationLine: 'line-through',
   },
   selectedOriginalPrice: {
@@ -224,8 +231,8 @@ const styles = StyleSheet.create({
   },
   regularPrice: {
     fontSize: moderateScale(16, 0.3),
-    fontFamily : fonts?.medium,
-    color : colors?.gray
+    fontFamily: fonts?.medium,
+    color: colors?.gray,
   },
   confirmButton: {
     backgroundColor: '#D4AF37',
@@ -240,6 +247,6 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(16, 0.3),
     fontWeight: '600',
   },
-})
+});
 
-export default SubscriptionScreen
+export default SubscriptionScreen;

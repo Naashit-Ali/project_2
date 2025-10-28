@@ -9,42 +9,54 @@ import {colors} from '../theme/colors';
 import {fonts} from '../theme/font';
 import CustomImage from '../components/atoms/CustomImage';
 import NavigationService from '../navigation/NavigationService';
+import CustomStatusBar from '../components/atoms/CustomStatusBar';
 
 const WelcomeScreen = () => {
   return (
-    <ImageBackground
-      source={Images.welcomeBg}
-      style={styles.container}
-      resizeMode="cover">
-      <CustomImage
-        source={Images.whitLogo}
-        style={styles.logo}
-        resizeMode="contain"
+    <>
+      <CustomStatusBar
+        translucent={true}
+        backgroundColor={'transparent'}
+        barStyle="light-content"
       />
-      <LinearGradient
-        colors={['rgba(44, 26, 136, 0.4)', 'rgba(44, 26, 136, 0.7)', '#271D5A']}
-        locations={[0, 0.5, 1]}
-        style={styles.overlay}>
-        <CustomText style={styles.welcomeText}>
-          Welcome To Truth and friend
-        </CustomText>
-        <CustomText style={styles.description}>
-          With support from millions, tap into our motivation and find your
-          strength
-        </CustomText>
-        <CustomButton
-          title={'Sign Up'}
-          onPress={() => {
-            NavigationService?.navigate('SignUpScreen');
-          }}
+      <ImageBackground
+        source={Images.welcomeBg}
+        style={styles.container}
+        resizeMode="cover">
+        <CustomImage
+          source={Images.whitLogo}
+          style={styles.logo}
+          resizeMode="contain"
         />
-        <CustomButton
-          title={'Login'}
-          variant="transparent"
-          style={{marginTop: moderateScale(10, 0.3)}}
-        />
-      </LinearGradient>
-    </ImageBackground>
+        <LinearGradient
+          colors={[
+            'rgba(44, 26, 136, 0.4)',
+            'rgba(44, 26, 136, 0.7)',
+            '#271D5A',
+          ]}
+          locations={[0, 0.5, 1]}
+          style={styles.overlay}>
+          <CustomText style={styles.welcomeText}>
+            Welcome To Truth and friend
+          </CustomText>
+          <CustomText style={styles.description}>
+            With support from millions, tap into our motivation and find your
+            strength
+          </CustomText>
+          <CustomButton
+            title={'Sign Up'}
+            onPress={() => {
+              NavigationService?.navigate('SignUpScreen');
+            }}
+          />
+          <CustomButton
+            title={'Login'}
+            variant="transparent"
+            style={{marginTop: moderateScale(10, 0.3)}}
+          />
+        </LinearGradient>
+      </ImageBackground>
+    </>
   );
 };
 

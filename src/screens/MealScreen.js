@@ -1,77 +1,60 @@
-import { View, Text, StyleSheet, ScrollView, FlatList, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
-import ScreenBoiler from '../components/skeleton/ScreenBoiler'
-import { moderateScale } from 'react-native-size-matters'
-import CustomHeading from '../components/molecules/CustomHeading'
-import TextPill from '../components/organisms/TextPill'
-import { macroData, mealData, workoutData } from '../utils/mockData'
-import SearchBar from '../components/molecules/SearchBar'
-import WorkoutCard from '../components/organisms/WorkoutCard'
-import MainHeader from '../components/organisms/MainHeader'
-import Tab from '../components/organisms/Tab'
-import CustomText from '../components/atoms/CustomText'
-import { colors } from '../theme/colors'
-import CustomButton from '../components/atoms/CustomButton'
-import { fonts } from '../theme/font'
-import CustomTextInput from '../components/atoms/CustomTextInput'
-import MealCard from '../components/organisms/MealCard'
+import {useState} from 'react';
+import {ScrollView, StyleSheet} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
+import CustomHeading from '../components/molecules/CustomHeading';
+import SearchBar from '../components/molecules/SearchBar';
+import MainHeader from '../components/organisms/MainHeader';
+import MealCard from '../components/organisms/MealCard';
+import TextPill from '../components/organisms/TextPill';
+import ScreenBoiler from '../components/skeleton/ScreenBoiler';
+import {colors} from '../theme/colors';
+import {fonts} from '../theme/font';
+import {mealData} from '../utils/mockData';
+import SafeFlatList from '../components/atoms/SafeFlatList';
 
 const MealScreen = () => {
-
-    const [selectedPill, setSelectedPill] = useState(0);
-
-
+  const [selectedPill, setSelectedPill] = useState(0);
   return (
-   <ScreenBoiler
-      containerStyle={{
-        // backgroundColor:'red'
-      }}
+    <ScreenBoiler
       scrollEnabled
-      wrapperContainerStyle={{
-        paddingHorizontal: moderateScale(16, 0.3),
-      }}
-    >
-      <MainHeader type={1} />
+      containerStyle={{
+        paddingHorizontal: moderateScale(5, 0.3),
+      }}>
+      <CustomHeading title={'Meal'} />
 
-    
-          <CustomHeading title={'Meal'} />
-
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{
-              alignItems: 'center',
-              gap: 10,
-              width: '100%',
-            }}
-            style={{
-              maxHeight: moderateScale(50, 0.3),
-              width: '100%',
-            }}
-          >
-            {mealData.map((item, index) => (
-              <TextPill
-                key={index}
-                title={item.label}
-                isSelected={selectedPill == index}
-                id={index}
-                onPress={() => setSelectedPill(index)}
-              />
-            ))}
-          </ScrollView>
-
-          <SearchBar />
-          <FlatList
-            data={[1, 2, 3, 4]}
-            renderItem={({ item, index }) => <MealCard />}
-            contentContainerStyle={{
-              gap: moderateScale(15, 0.3),
-              paddingBottom: moderateScale(100, 0.3),
-              marginTop: moderateScale(10, 0.3),
-            }}
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{
+          alignItems: 'center',
+          gap: moderateScale(10, 0.3),
+        }}
+        style={{
+          maxHeight: moderateScale(50, 0.3),
+          width: '100%',
+        }}>
+        {mealData.map((item, index) => (
+          <TextPill
+            key={index}
+            title={item.label}
+            isSelected={selectedPill == index}
+            id={index}
+            onPress={() => setSelectedPill(index)}
           />
+        ))}
+      </ScrollView>
 
-     
+      <SearchBar />
+      <SafeFlatList
+        data={[1, 2, 3, 4]}
+        renderItem={({item, index}) => <MealCard />}
+        keyExtractor={(item, index) => `meal_${index}`}
+        contentContainerStyle={{
+          gap: moderateScale(15, 0.3),
+          paddingBottom: moderateScale(100, 0.3),
+          marginTop: moderateScale(10, 0.3),
+        }}
+      />
     </ScreenBoiler>
   );
 };
@@ -89,7 +72,7 @@ const styles = StyleSheet.create({
     marginBottom: moderateScale(30, 0.3),
     alignItems: 'center',
     // justifyContent: 'space-between',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   exerciseCard: {
     width: '30%',
@@ -103,7 +86,7 @@ const styles = StyleSheet.create({
   exerciseText: {
     fontSize: moderateScale(14, 0.3),
     color: colors?.gray,
-    fontFamily: fonts?.regular
+    fontFamily: fonts?.regular,
   },
   yourPlanTitle: {
     fontSize: moderateScale(18, 0.3),
@@ -127,7 +110,7 @@ const styles = StyleSheet.create({
   planItemText: {
     fontSize: moderateScale(14, 0.3),
     color: colors?.gray,
-    fontFamily: fonts?.regular
+    fontFamily: fonts?.regular,
   },
 });
-export default MealScreen
+export default MealScreen;

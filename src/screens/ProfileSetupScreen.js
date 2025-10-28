@@ -1,26 +1,23 @@
-import React from 'react'
-import { StyleSheet, View } from 'react-native'
-import { moderateScale } from 'react-native-size-matters'
-import Images from '../assets/images'
-import CustomButton from '../components/atoms/CustomButton'
-import CustomImage from '../components/atoms/CustomImage'
-import CustomText from '../components/atoms/CustomText'
-import CustomTextInput from '../components/atoms/CustomTextInput'
-import ScreenBoiler from '../components/skeleton/ScreenBoiler'
-import { colors } from '../theme/colors'
-import { fonts } from '../theme/font'
-import CustomDropdown from '../components/organisms/CustomDropdown'
-import NavigationService from '../navigation/NavigationService'
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
+import Images from '../assets/images';
+import CustomButton from '../components/atoms/CustomButton';
+import CustomImage from '../components/atoms/CustomImage';
+import CustomText from '../components/atoms/CustomText';
+import CustomTextInput from '../components/atoms/CustomTextInput';
+import ScreenBoiler from '../components/skeleton/ScreenBoiler';
+import {colors} from '../theme/colors';
+import {fonts} from '../theme/font';
+import CustomDropdown from '../components/organisms/CustomDropdown';
+import NavigationService from '../navigation/NavigationService';
 
 const ProfileSetupScreen = () => {
   return (
     <ScreenBoiler headerType={2} headerTitle="Back">
-      <CustomText style={styles.heading}>
-        Profile Setup
-      </CustomText>
+      <CustomText style={styles.heading}>Profile Setup</CustomText>
 
       <View style={styles.profileImageContainer}>
-
         <CustomImage
           source={Images?.logo}
           style={styles?.profileImage}
@@ -30,35 +27,32 @@ const ProfileSetupScreen = () => {
         <CustomText style={styles?.profileText}>
           Maximize file size is 3MB
         </CustomText>
-
       </View>
 
       <CustomTextInput placeholder="Username" />
-      <CustomTextInput placeholder="Bio"
-      multiline
-      inputStyle={{
-        height: moderateScale(100, 0.3),
-        textAlignVertical: 'top',
-      }} />
-
-      <CustomDropdown
-      placeholder={'Wellness Goal'}
+      <CustomTextInput
+        placeholder="Bio"
+        inputStyle={{
+          height: moderateScale(100, 0.3),
+          textAlignVertical: 'top',
+        }}
+        multiline={true}
       />
+
+      <CustomDropdown placeholder={'Wellness Goal'} />
 
       <CustomButton
         title={`Let's Go!`}
         style={{
-          marginTop: moderateScale(24, 0.3),
+          marginTop: moderateScale(20, 0.3),
         }}
         onPress={() => {
-          NavigationService?.navigate('BottomNavigation');
+          NavigationService?.navigate('DrawerNavigation');
         }}
       />
-
     </ScreenBoiler>
-
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   heading: {
@@ -74,8 +68,10 @@ const styles = StyleSheet.create({
     fontFamily: fonts?.regular,
   },
   profileImage: {
-    width: moderateScale(100, 0.3), height: moderateScale(100, 0.3),
-    backgroundColor: colors?.lightGray, borderRadius: moderateScale(50, 0.3),
+    width: moderateScale(100, 0.3),
+    height: moderateScale(100, 0.3),
+    backgroundColor: colors?.lightGray,
+    borderRadius: moderateScale(50, 0.3),
     marginBottom: moderateScale(8, 0.3),
   },
   profileImageContainer: {
@@ -85,7 +81,7 @@ const styles = StyleSheet.create({
     marginBottom: moderateScale(24, 0.3),
     width: '50%',
     alignSelf: 'center',
-  }
+  },
 });
 
-export default ProfileSetupScreen
+export default ProfileSetupScreen;

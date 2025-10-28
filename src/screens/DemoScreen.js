@@ -1,10 +1,9 @@
+
 import { View, Text, StyleSheet, ScrollView, Dimensions, Animated, Image } from 'react-native'
 import React, { useRef, useState, useEffect } from 'react'
-// import ScreenBoiler from '../components/skeleton/ScreenBoiler'
-// import Images from '../assets/images'
-import { moderateScale } from 'react-native-size-matters'
 import ScreenBoiler from '../components/skeleton/ScreenBoiler'
 import Images from '../assets/images'
+import { moderateScale } from 'react-native-size-matters'
 
 const { width } = Dimensions.get('window')
 const ITEM_WIDTH = 3
@@ -184,12 +183,7 @@ const DemoScreen = () => {
           </View>
         </View>
 
-        {/* Continue Button */}
-        <View style={styles.buttonContainer}>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Continue</Text>
-          </View>
-        </View>
+      
       </View>
     </ScreenBoiler>
   )

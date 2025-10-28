@@ -7,10 +7,16 @@ import Images from '../../assets/images'
 import CustomText from '../atoms/CustomText'
 import { fonts } from '../../theme/font'
 import CustomButton from '../atoms/CustomButton'
+import { globalStyles } from '../../utils/globalStyles'
+import NavigationService from '../../navigation/NavigationService'
 
 const EventCard = ({ type = 1 }) => {
   return (
-    <TouchableOpacity style={styles?.container} activeOpacity={0.8}>
+    <TouchableOpacity style={styles?.container} activeOpacity={0.8}
+    onPress={() => {
+      NavigationService?.navigate('EventDetailScreen');
+    }}
+    >
       <CustomImage
         source={Images?.welcomeBg}
         resizeMode='cover'
@@ -39,7 +45,7 @@ const EventCard = ({ type = 1 }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
+    width: '99%',
     padding: moderateScale(16, 0.3),
     backgroundColor: colors?.white,
     borderRadius: moderateScale(12, 0.3),
@@ -47,6 +53,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    ...globalStyles?.elevationStyle,
+    alignSelf: 'center',
   },
   img: {
     width: moderateScale(50, 0.3),

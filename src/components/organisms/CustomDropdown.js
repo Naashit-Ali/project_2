@@ -14,12 +14,14 @@ const CustomDropdown = ({
     placeholder,
     errorText,
     style,
+    label,
 }) => {
     const { width, height } = useWindowDimensions();
     const styles = customStyleSheet(width, height);
 
     return (
         <View style={styles?.container}>
+            {label && <CustomText style={styles?.label}>{label}</CustomText>}}
             <Dropdown
                 style={[styles?.dropdown, style]}
                 data={data}
@@ -67,7 +69,13 @@ const customStyleSheet = (width, height) => StyleSheet.create({
         fontFamily: fonts?.regular,
         marginTop: moderateScale(8, 0.3),
         marginLeft: moderateScale(10, 0.3),
-    }
+    },
+    label: {
+        color: colors?.themeBlack,
+        fontSize: moderateScale(14, 0.3),
+        fontFamily: fonts?.regular,
+        marginBottom: moderateScale(8, 0.3),
+    },
 })
 
 export default CustomDropdown

@@ -1,121 +1,127 @@
-import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
-import ScreenBoiler from '../components/skeleton/ScreenBoiler'
-import MainHeader from '../components/organisms/MainHeader'
-import { moderateScale } from 'react-native-size-matters'
-import CustomHeading from '../components/molecules/CustomHeading'
-import Video from 'react-native-video'
-import { fonts } from '../theme/font'
-import { colors } from '../theme/colors'
-import ProgressCard from '../components/organisms/ProgressCard'
-import CustomText from '../components/atoms/CustomText'
-import IngredientCard from '../components/organisms/IngredientCard'
-import CustomButton from '../components/atoms/CustomButton'
+import {View, Text, StyleSheet} from 'react-native';
+import React from 'react';
+import ScreenBoiler from '../components/skeleton/ScreenBoiler';
+import MainHeader from '../components/organisms/MainHeader';
+import {moderateScale} from 'react-native-size-matters';
+import CustomHeading from '../components/molecules/CustomHeading';
+import Video from 'react-native-video';
+import {fonts} from '../theme/font';
+import {colors} from '../theme/colors';
+import ProgressCard from '../components/organisms/ProgressCard';
+import CustomText from '../components/atoms/CustomText';
+import IngredientCard from '../components/organisms/IngredientCard';
+import CustomButton from '../components/atoms/CustomButton';
+import Images from '../assets/images';
+import {mealIngredients} from '../utils/mockData';
 
 const MealDetail = () => {
-    return (
-        <ScreenBoiler
-            wrapperContainerStyle={{
-                paddingHorizontal: moderateScale(16, 0.3),
-            }}
-        >
-            <MainHeader type={1}
-                isBack
-            />
+  return (
+    <ScreenBoiler isBack={true} >
+      <CustomHeading title={'Recipe Detail'} />
+      <View
+        style={{
+          borderRadius: moderateScale(10, 0.3),
+          overflow: 'hidden',
+        }}>
+        <Video
+          source={{uri: 'https://www.w3schools.com/html/mov_bbb.mp4'}}
+          style={{
+            width: '100%',
+            height: moderateScale(250, 0.3),
+            borderRadius: moderateScale(10, 0.3),
+          }}
+          resizeMode="cover"
+          repeat={true}
+          muted={false}
+          paused={true}
+        />
+      </View>
 
-            <CustomHeading
-                title={'Recipe Detail'}
-            />
-            <View style={{
-                borderRadius: moderateScale(10, 0.3),
-                overflow: 'hidden',
-            }}>
-                <Video
-                    source={{ uri: 'https://www.w3schools.com/html/mov_bbb.mp4' }}
-                    style={{ width: '100%', height: moderateScale(250, 0.3), borderRadius: moderateScale(10, 0.3) }}
-                    resizeMode="cover"
-                    repeat={true}
-                    muted={false}
-                    paused={true}
-                />
-            </View>
+      <View style={styles?.contentContainer}>
+        <CustomText style={styles?.title}>
+          Classic Grilled Chicken Quinoa Bowl With Asparagus
+        </CustomText>
+        <CustomText style={styles?.description}>
+          A healthy and delicious bowl featuring grilled chicken, quinoa, and
+          fresh asparagus, perfect for a nutritious meal.
+        </CustomText>
 
-            <View style={styles?.contentContainer}>
-                <CustomText style={styles?.title}>Classic Grilled Chicken Quinoa Bowl With Asparagus</CustomText>
-                <CustomText style={styles?.description}>A healthy and delicious bowl featuring grilled chicken, quinoa, and fresh asparagus, perfect for a nutritious meal.</CustomText>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginTop: moderateScale(10, 0.3),
+          }}>
+          <ProgressCard image={Images?.fireOrange} />
+          <ProgressCard
+            progressColor="yellow"
+            title="9g Fat"
+            image={Images?.drop}
+          />
+          <ProgressCard
+            progressColor="green"
+            title="92g Protein"
+            image={Images?.leaf}
+          />
+        </View>
+      </View>
 
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: moderateScale(10, 0.3) }}>
+      <CustomText
+        style={[
+          styles?.title,
+          {
+            marginTop: moderateScale(20, 0.3),
+          },
+        ]}>
+        Ingredients
+      </CustomText>
 
-                    <ProgressCard />
-                    <ProgressCard
-                        progressColor='yellow'
-                        title='9g Fat'
-                    /><ProgressCard
-                        progressColor='green'
-                        title='92g Protein'
-                    />
+      <View
+        style={{
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          width: '100%',
+          alignItems: 'center',
+          gap: moderateScale(12, 0.3),
+          marginTop: moderateScale(12, 0.3),
+        }}>
+        {mealIngredients.map((item, index) => (
+          <IngredientCard key={`ingredient_${item?.id || item?.name}_${index}`} item={item} />
+        ))}
+      </View>
 
-
-                </View>
-            </View>
-
-
-            <CustomText
-                style={[styles?.title,
-                {
-                    marginTop: moderateScale(20, 0.3),
-                }
-                ]}
-            >Ingredients</CustomText>
-
-            <View style={{
-                flexDirection: 'row',
-                flexWrap: 'wrap',
-                width: '100%',
-                alignItems: 'center',
-                gap: moderateScale(12, 0.3),
-            }}>
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, index) => (
-                    <IngredientCard key={index} />
-                ))}
-
-            </View>
-
-            <CustomButton
-                title={'Save Recipe'}
-                style={{
-                    marginTop: moderateScale(30, 0.3),
-                }}
-            />
-
-
-        </ScreenBoiler>
-    )
-}
+      <CustomButton
+        title={'Save Recipe'}
+        style={{
+          marginVertical: moderateScale(30, 0.3),
+        }}
+      />
+    </ScreenBoiler>
+  );
+};
 
 const styles = StyleSheet.create({
-    title: {
-        fontSize: moderateScale(18, 0.3),
-        color: colors?.themeBlack,
-        fontFamily: fonts?.medium,
-    },
-    description: {
-        fontSize: moderateScale(14, 0.3),
-        color: colors?.grayV2,
-        fontFamily: fonts?.regular,
-    },
-    image: {
-        width: '100%',
-        height: moderateScale(200, 0.3),
-        borderTopLeftRadius: moderateScale(12, 0.3),
-        borderTopRightRadius: moderateScale(12, 0.3),
-    },
-    contentContainer: {
-        // padding: moderateScale(12, 0.3),
-        gap: moderateScale(6, 0.3),
-        marginTop: moderateScale(12, 0.3),
-    },
-})
+  title: {
+    fontSize: moderateScale(16, 0.3),
+    color: colors?.themeBlack,
+    fontFamily: fonts?.medium,
+  },
+  description: {
+    fontSize: moderateScale(14, 0.3),
+    color: colors?.grayV2,
+    fontFamily: fonts?.regular,
+  },
+  image: {
+    width: '100%',
+    height: moderateScale(200, 0.3),
+    borderTopLeftRadius: moderateScale(12, 0.3),
+    borderTopRightRadius: moderateScale(12, 0.3),
+  },
+  contentContainer: {
+    // padding: moderateScale(12, 0.3),
+    gap: moderateScale(6, 0.3),
+    marginTop: moderateScale(12, 0.3),
+  },
+});
 
-
-export default MealDetail
+export default MealDetail;

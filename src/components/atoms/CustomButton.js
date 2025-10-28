@@ -27,6 +27,7 @@ const CustomButton = ({
   imageStyle,
   style,
   textStyle,
+  disabled = false,
 }) => {
   const {width, height} = useWindowDimensions();
   const styles = customStyleSheet(width, height);
@@ -36,6 +37,7 @@ const CustomButton = ({
     <TouchableOpacity
       onPress={onPress}
       activeOpacity={0.8}
+      disabled={disabled}
       style={[
         styles.button,
         variant === 'primary' && {backgroundColor: COLORS.primary},

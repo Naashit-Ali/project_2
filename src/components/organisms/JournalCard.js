@@ -6,6 +6,7 @@ import CustomText from '../atoms/CustomText'
 import { fonts } from '../../theme/font'
 import Slider from '@react-native-community/slider'
 import NavigationService from '../../navigation/NavigationService'
+import { globalStyles } from '../../utils/globalStyles'
 
 const JournalCard = ({type = 1}) => {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -81,7 +82,7 @@ const JournalCard = ({type = 1}) => {
               const height = Math.random() * 10 + 10
               return (
                 <View
-                  key={index}
+                  key={`wave_bar_${index}`}
                   style={[
                     styles?.waveBar,
                     {
@@ -103,19 +104,21 @@ const JournalCard = ({type = 1}) => {
 
 const styles = StyleSheet?.create({
   container: {
-    width: '100%',
+    width: '99%',
     padding: moderateScale(16, 0.3),    
     backgroundColor: colors?.white,
     borderRadius: moderateScale(12, 0.3),
     gap: moderateScale(6, 0.3),
+    alignSelf: 'center',
+    ...globalStyles?.elevationStyle
   },
   labelText: {
-    fontSize: moderateScale(12, 0.3),
+    fontSize: moderateScale(14, 0.3),
     color: colors?.grayV2 || '#9CA3AF',
     fontFamily: fonts?.regular,
   },
   nameText: {
-    fontSize: moderateScale(18, 0.3),
+    fontSize: moderateScale(16, 0.3),
     color: colors?.themeBlack || '#1F2937',
     fontFamily: fonts?.medium || fonts?.medium,
     marginTop: moderateScale(2, 0.3),

@@ -9,7 +9,7 @@ import {
 import CustomStatusBar from '../atoms/CustomStatusBar';
 import {colors} from '../../theme/colors';
 import MainHeader from '../organisms/MainHeader';
-import { moderateScale } from 'react-native-size-matters';
+import {moderateScale} from 'react-native-size-matters';
 
 const ScreenBoiler = ({
   children,
@@ -21,7 +21,14 @@ const ScreenBoiler = ({
   containerStyle,
   headerType,
   headerTitle = '',
-  wrapperContainerStyle,
+  isBack = false,
+  isSetting = false,
+  isMenu = false,
+  mainContainerStyle = {},
+  headerOneStyle = {},
+  showHeader = true,
+  hidden = false,
+  barStyle = 'light-content',
 }) => {
   const Wrapper = backgroundImage ? ImageBackground : View;
 
@@ -33,7 +40,6 @@ const ScreenBoiler = ({
             {
               flexGrow: 1,
               backgroundColor: backgroundImage ? undefined : backgroundColor,
-              paddingBottom: moderateScale(20, 0.3),
             },
             containerStyle,
           ]}
@@ -55,25 +61,36 @@ const ScreenBoiler = ({
       )}
     </>
   );
-
   return (
     <KeyboardAvoidingView
       style={{flex: 1, backgroundColor: colors?.white}}
       behavior={behavior}
-    
       keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}>
-      {/* <CustomStatusBar {...statusBarProps} /> */}
+      <CustomStatusBar
+        {...statusBarProps}
+        barStyle={barStyle}
+        hidden={hidden}
+      />
       <Wrapper
-        style={[{
+        style={{
           flex: 1,
-          paddingHorizontal: moderateScale(24,0.3),
-        }, wrapperContainerStyle]
-      }
+          paddingHorizontal: moderateScale(24, 0.3),
+          ...mainContainerStyle,
+        }}
         {...(backgroundImage && {
           source: backgroundImage,
           resizeMode: 'cover',
         })}>
-          {/* <MainHeader type={headerType} title={headerTitle}/> */}
+        {showHeader && (
+          <MainHeader
+            type={headerType}
+            isSetting={isSetting}
+            isMenu={isMenu}
+            title={headerTitle}
+            isBack={isBack}
+            headerOneStyle={headerOneStyle}
+          />
+        )}
         {content}
       </Wrapper>
     </KeyboardAvoidingView>

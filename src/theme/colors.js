@@ -7,6 +7,7 @@ export const colors = {
    themeBlackV2:'#1E132B',
    themeBlackV3:'#141B34',
    white: '#FFFFFF',
+   whiteV2:'#F8F8F8',
    black: '#000000',
    darkGray:'#69667A',
    gray: '#808080',
@@ -23,7 +24,9 @@ export const colors = {
    orange:'#FA711B',
    yellow:'#F4A101',
    danger:'#f40101',
-   gradientPrimary:['#956AFF', '#271D5A']
+   gradientPrimary:['#956AFF', '#271D5A'],
+   lightBlue: '#DBEAFE',
+   blueV2:'#2563EB'
 
 
   };

@@ -9,7 +9,7 @@ const Tab = ({data, activeTab, onTabChange}) => {
     <View style={styles.container}>
       {data.map((tab, index) => (
         <TouchableOpacity
-          key={index}
+          key={`tab_${tab.value}_${index}`}
           style={[styles.tabButton, {
             borderBottomWidth: 2,
             borderBottomColor: activeTab === tab.value ? colors?.secondary : colors?.white,
@@ -18,7 +18,7 @@ const Tab = ({data, activeTab, onTabChange}) => {
           activeOpacity={0.7}>
           <Text
             style={[
-              styles.tabText, 
+              styles.tabText,
               activeTab === tab.value && styles.activeTabText,
             ]}>
             {tab.label}

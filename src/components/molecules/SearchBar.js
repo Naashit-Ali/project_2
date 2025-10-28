@@ -1,42 +1,41 @@
-import AntDesign from '@react-native-vector-icons/ant-design'
-import { Icon } from 'native-base'
-import React from 'react'
-import { StyleSheet, TextInput, View } from 'react-native'
-import { moderateScale } from 'react-native-size-matters'
-import Images from '../../assets/images'
-import { colors } from '../../theme/colors'
-import { fonts } from '../../theme/font'
-import CustomImage from '../atoms/CustomImage'
+import AntDesign from '@react-native-vector-icons/ant-design';
+import {Icon} from 'native-base';
+import React from 'react';
+import {StyleSheet, TextInput, View} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
+import Images from '../../assets/images';
+import {colors} from '../../theme/colors';
+import {fonts} from '../../theme/font';
+import CustomImage from '../atoms/CustomImage';
+import {globalStyles} from '../../utils/globalStyles';
 
-const SearchBar = ({
-  value,
-  onChangeText,
-}) => {
+const SearchBar = ({value, onChangeText, showFilter = true}) => {
   return (
     <View style={styles.container}>
-
       <CustomImage
         source={Images?.search}
         style={styles?.filter}
-        resizeMode='contain'
+        resizeMode="contain"
       />
 
       <TextInput
-        placeholder='Search'
+        placeholder="Search"
         style={styles?.inputStyle}
         placeholderTextColor={colors?.grayV2}
         value={value}
         onChangeText={onChangeText}
       />
 
-      <CustomImage
-        source={Images?.filter}
-        style={styles?.filter}
-        resizeMode='contain'
-      />
+      {showFilter && (
+        <CustomImage
+          source={Images?.filter}
+          style={styles?.filter}
+          resizeMode="contain"
+        />
+      )}
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -48,18 +47,20 @@ const styles = StyleSheet.create({
     padding: moderateScale(8, 0.3),
     borderRadius: moderateScale(10, 0.3),
     justifyContent: 'space-between',
+    marginTop: moderateScale(10, 0.3),
+    ...globalStyles?.elevationStyle,
   },
   inputStyle: {
     flex: 1,
     marginLeft: moderateScale(4, 0.3),
     fontSize: moderateScale(14, 0.3),
     color: colors?.black,
-    fontFamily: fonts?.regular
+    fontFamily: fonts?.regular,
   },
   filter: {
     width: moderateScale(24, 0.3),
     height: moderateScale(24, 0.3),
-  }
-})
+  },
+});
 
-export default SearchBar
+export default SearchBar;

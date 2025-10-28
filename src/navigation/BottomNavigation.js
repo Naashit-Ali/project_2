@@ -1,21 +1,24 @@
 import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, StyleSheet, Animated, Image } from 'react-native';
-import { colors } from '../theme/colors';
-import { moderateScale } from 'react-native-size-matters';
-import { useSelector } from 'react-redux';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {View, StyleSheet, Animated, Image} from 'react-native';
+import {colors} from '../theme/colors';
+import {moderateScale} from 'react-native-size-matters';
+import {useSelector} from 'react-redux';
 import WorkoutScreen from '../screens/WorkoutScreen';
 import MealScreen from '../screens/MealScreen';
 import HomeScreen from '../screens/HomeScreen';
 import Images from '../assets/images';
 import MindsetScreen from '../screens/MindsetScreen';
 import EventScreen from '../screens/EventScreen';
-import { fonts } from '../theme/font';
+import {fonts} from '../theme/font';
+import {globalStyles} from '../utils/globalStyles';
 
 const Tab = createBottomTabNavigator();
-const TabBarIcon = ({ focused, iconFocused, iconUnfocused, label }) => {
+const TabBarIcon = ({focused, iconFocused, iconUnfocused, label}) => {
   const scaleAnim = React.useRef(new Animated.Value(focused ? 1 : 0)).current;
-  const opacityAnim = React.useRef(new Animated.Value(focused ? 1 : 0.6)).current;
+  const opacityAnim = React.useRef(
+    new Animated.Value(focused ? 1 : 0.6),
+  ).current;
 
   React.useEffect(() => {
     Animated.parallel([
@@ -51,7 +54,7 @@ const TabBarIcon = ({ focused, iconFocused, iconUnfocused, label }) => {
             styles.pillBackground,
             {
               width: pillWidth,
-              transform: [{ scale: pillScale }],
+              transform: [{scale: pillScale}],
             },
           ]}
         />
@@ -62,8 +65,7 @@ const TabBarIcon = ({ focused, iconFocused, iconUnfocused, label }) => {
           {
             opacity: opacityAnim,
           },
-        ]}
-      >
+        ]}>
         <Animated.Image
           source={focused ? iconFocused : iconUnfocused}
           style={styles.imageStyle}
@@ -76,8 +78,7 @@ const TabBarIcon = ({ focused, iconFocused, iconUnfocused, label }) => {
               {
                 opacity: scaleAnim,
               },
-            ]}
-          >
+            ]}>
             {label}
           </Animated.Text>
         )}
@@ -134,25 +135,23 @@ const BottomNavigation = () => {
         tabBarShowLabel: false,
         tabBarStyle: {
           backgroundColor: colors.white,
-          position: 'absolute',
           overflow: 'hidden',
           height: moderateScale(55, 0.3),
-          paddingBottom: moderateScale(10, 0.3),
-          paddingTop: moderateScale(10, 0.3),
+          paddingBottom: moderateScale(5, 0.3),
+          paddingTop: moderateScale(5, 0.3),
           paddingHorizontal: moderateScale(20, 0.3),
-          elevation: 0,
+          ...globalStyles?.elevationStyle,
           shadowOpacity: 0,
           borderTopWidth: 0,
         },
-      }}
-    >
+      }}>
       {tabScreens.map((screen, index) => (
         <Tab.Screen
           key={index}
           name={screen.name}
           component={screen.component}
           options={{
-            tabBarIcon: ({ focused }) => (
+            tabBarIcon: ({focused}) => (
               <TabBarIcon
                 focused={focused}
                 iconFocused={screen.iconFocused}
@@ -184,8 +183,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: moderateScale(15, 0.3),
-    gap: moderateScale(8, 0.3),
+    paddingHorizontal: moderateScale(5, 0.3),
+    gap: moderateScale(5, 0.3),
     zIndex: 1,
   },
   imageStyle: {
@@ -194,8 +193,11 @@ const styles = StyleSheet.create({
   },
   label: {
     color: colors.white,
-    fontSize: moderateScale(10, 0.3),
-   fontFamily: fonts?.regular
+    fontSize: moderateScale(12, 0.3),
+    fontFamily: fonts?.medium,
+    textAlign: 'center',
+    flexShrink: 0,
+    minWidth: 0,
   },
 });
 

@@ -1,7 +1,6 @@
 import React, {useState, useRef} from 'react';
 import {
   Dimensions,
-  FlatList,
   Modal,
   Pressable,
   StyleSheet,
@@ -16,6 +15,8 @@ import {colors} from '../../theme/colors';
 import CustomImage from '../atoms/CustomImage';
 import {Icon} from 'native-base';
 import AntDesign from '@react-native-vector-icons/ant-design';
+import { fonts } from '../../theme/font';
+import SafeFlatList from '../atoms/SafeFlatList';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 
@@ -275,7 +276,7 @@ const PostCard = ({post = {}, onLike, onComment, onShare}) => {
 
     return (
       <Pressable style={styles.commentsContainer} onPress={onComment}>
-        <Text style={styles.commentsText}>💬 {commentCount}Comments</Text>
+        <Text style={styles.likeLabel}>💬 {commentCount + ' '}Comment{commentCount > 1 && 's'}</Text>
       </Pressable>
     );
   };
@@ -332,7 +333,7 @@ const PostCard = ({post = {}, onLike, onComment, onShare}) => {
           style={styles.galleryBackdrop}
           onPress={() => setGalleryVisible(false)}
         />
-        <FlatList
+        <SafeFlatList
           data={media}
           horizontal
           pagingEnabled
@@ -354,20 +355,20 @@ const PostCard = ({post = {}, onLike, onComment, onShare}) => {
                     resizeMode="contain"
                   />
                 ) : (
-                <Video
-        source={{ uri: item?.uri }} // your video link or require('path')
-        style={styles.backgroundVideo}
-        resizeMode="cover" // contain | stretch | cover
-        repeat // loops video
-        muted={false} // set true if you don’t want sound
-        controls // show native controls (play/pause, seek bar)
-        paused={false} // set true if you want to start paused
-      /> 
+                  <Video
+                    source={{uri: item?.uri}} // your video link or require('path')
+                    style={styles.backgroundVideo}
+                    resizeMode="cover" // contain | stretch | cover
+                    repeat // loops video
+                    muted={false} // set true if you don't want sound
+                    controls // show native controls (play/pause, seek bar)
+                    paused={false} // set true if you want to start paused
+                  />
                 )}
               </View>
             );
           }}
-          keyExtractor={(item, index) => index.toString()}
+          keyExtractor={(item, index) => `gallery_${item?.uri}_${index}`}
         />
         <Pressable
           style={styles.closeButton}
@@ -399,14 +400,12 @@ const PostCard = ({post = {}, onLike, onComment, onShare}) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.white,
-    marginVertical: moderateScale(4),
     borderRadius: moderateScale(12),
     overflow: 'hidden',
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: moderateScale(16),
   },
   avatar: {
     width: moderateScale(40),
@@ -419,22 +418,23 @@ const styles = StyleSheet.create({
   },
   username: {
     fontSize: moderateScale(15),
-    fontWeight: '600',
+    fontFamily: fonts?.medium,
     color: colors.themeBlack,
     marginBottom: moderateScale(2),
   },
   timestamp: {
     fontSize: moderateScale(12),
-    color: colors.lightGray,
+    color: colors.themeBlack,
+    fontFamily: fonts?.medium,
   },
   contentContainer: {
-    paddingHorizontal: moderateScale(16),
-    paddingBottom: moderateScale(12),
+    paddingVertical: moderateScale(12),
   },
   content: {
     fontSize: moderateScale(14),
     color: colors.themeBlack,
     lineHeight: moderateScale(20),
+    fontFamily: fonts?.regular,
   },
   singleMediaContainer: {
     width: '100%',
@@ -453,7 +453,7 @@ const styles = StyleSheet.create({
     width: moderateScale(50),
     height: moderateScale(50),
     borderRadius: moderateScale(25),
-    backgroundColor: 'rgba(255, 20, 147, 0.9)',
+    backgroundColor: 'rgba(105, 100, 103, 0.9)',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -462,9 +462,7 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(20),
     marginLeft: moderateScale(3),
   },
-  gridContainer: {
-    paddingHorizontal: moderateScale(16),
-  },
+  gridContainer: {},
   gridRow: {
     flexDirection: 'row',
     marginBottom: moderateScale(4),
@@ -481,9 +479,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  sequentialContainer: {
-    paddingHorizontal: moderateScale(16),
-  },
+  sequentialContainer: {},
   firstMediaContainer: {
     width: '100%',
     height: moderateScale(250),
@@ -525,13 +521,13 @@ const styles = StyleSheet.create({
     width: moderateScale(30),
     height: moderateScale(30),
     borderRadius: moderateScale(15),
-    backgroundColor: 'rgba(255, 20, 147, 0.9)',
+    backgroundColor: 'rgba(105, 100, 103, 0.9)',
     justifyContent: 'center',
     alignItems: 'center',
   },
   playIconSmall: {
-    color: colors.white,
-    fontSize: moderateScale(12),
+    color: colors.gradientPrimary,
+    fontSize: moderateScale(20),
     marginLeft: moderateScale(2),
   },
   overlay: {
@@ -550,7 +546,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   footer: {
-    padding: moderateScale(16),
     paddingTop: moderateScale(12),
   },
   likesContainer: {
@@ -558,27 +553,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: moderateScale(12),
   },
-  likeAvatars: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  likeAvatar: {
-    width: moderateScale(24),
-    height: moderateScale(24),
-    borderRadius: moderateScale(12),
-    borderWidth: 2,
-    borderColor: colors.white,
-  },
-  likeCountBadge: {
-    backgroundColor: colors.lightGray,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  likeCountBadgeText: {
-    fontSize: moderateScale(10),
-    color: colors.white,
-    fontWeight: 'bold',
-  },
+  
+  
+  
+  
   likeTextContainer: {
     flex: 1,
     flexDirection: 'row',
@@ -586,13 +564,14 @@ const styles = StyleSheet.create({
     gap: moderateScale(4),
   },
   likeLabel: {
-    fontSize: moderateScale(13),
+    fontSize: moderateScale(14),
     color: colors.themeBlack,
-    fontWeight: '500',
+    fontFamily: fonts?.regular,
   },
   likeCount: {
-    color: colors.lightGray,
-    fontWeight: '400',
+  fontSize: moderateScale(14),
+    color: colors.themeBlack,
+    fontFamily: fonts?.regular,
   },
   likeAndCommentConatiner: {
     flexDirection: 'row',
@@ -695,7 +674,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     zIndex: 999,
   },
-    backgroundVideo: {
+  backgroundVideo: {
     width: '100%',
     height: '100%', // adjust height for banner-style video
     backgroundColor: '#000',
@@ -703,3 +682,54 @@ const styles = StyleSheet.create({
 });
 
 export default PostCard;
+//  post={{
+//               user: {
+//                 avatar: 'https://example.com/avatar.jpg',
+//                 username: 'John Doe',
+//               },
+//               content: 'This is a sample post content',
+//               media: [
+//                 {
+//                   uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQby7FxM4LwRdj1cafv66KUGmCVWIAuORa3Lbd-5AW8buWQyt_x53icbLNWq3ERq0Glz58&usqp=CAU',
+//                   type: 'image',
+//                 },
+//                 {
+//                   uri: 'https://www.w3schools.com/html/mov_bbb.mp4',
+//                   type: 'video',
+//                   // thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQby7FxM4LwRdj1cafv66KUGmCVWIAuORa3Lbd-5AW8buWQyt_x53icbLNWq3ERq0Glz58&usqp=CAU',
+//                 },
+//                 {
+//                   uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQby7FxM4LwRdj1cafv66KUGmCVWIAuORa3Lbd-5AW8buWQyt_x53icbLNWq3ERq0Glz58&usqp=CAU',
+//                   type: 'image',
+//                 },
+//                 {
+//                   uri: 'https://row.gymshark.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2F8urtyqugdt2l%2F1oIrMoqckYTE96ekt5ECyT%2F51471e1e09c39541c1564bc164bd9b06%2Fdesktop-how-often-to-go-to-the-gym.jpg&w=3840&q=85',
+//                   type: 'image',
+//                 },
+//                 {
+//                   uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQby7FxM4LwRdj1cafv66KUGmCVWIAuORa3Lbd-5AW8buWQyt_x53icbLNWq3ERq0Glz58&usqp=CAU',
+//                   type: 'image',
+//                 },
+//                 {
+//                   uri: 'https://row.gymshark.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2F8urtyqugdt2l%2F1oIrMoqckYTE96ekt5ECyT%2F51471e1e09c39541c1564bc164bd9b06%2Fdesktop-how-often-to-go-to-the-gym.jpg&w=3840&q=85',
+//                   type: 'video',
+//                 },
+//               ],
+//               likes: [
+//                 {avatar: 'https://example.com/avatar1.jpg', username: 'You'},
+//                 {avatar: 'https://example.com/avatar2.jpg', username: 'John'},
+//                 {avatar: 'https://example.com/avatar1.jpg', username: 'User1'},
+//                 {avatar: 'https://example.com/avatar2.jpg', username: 'User2'},
+//               ],
+//               comments: [
+//                 {
+//                   user: {
+//                     avatar: 'https://example.com/avatar3.jpg',
+//                     username: 'User3',
+//                   },
+//                   text: 'Nice post!',
+//                 },
+//               ],
+//               timestamp: '2h ago',
+//             }}
+//             onComment={() => console.log('Comment Pressed')}

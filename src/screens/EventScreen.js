@@ -1,22 +1,23 @@
-import { View, Text, FlatList, StyleSheet, useWindowDimensions } from 'react-native'
-import React from 'react'
-import ScreenBoiler from '../components/skeleton/ScreenBoiler'
-import MainHeader from '../components/organisms/MainHeader'
-import SearchBar from '../components/molecules/SearchBar'
-import EventCard from '../components/organisms/EventCard'
-import { moderateScale } from 'react-native-size-matters'
-import CustomText from '../components/atoms/CustomText'
-import { fonts } from '../theme/font'
-import { colors } from '../theme/colors'
-import CustomDropdown from '../components/organisms/CustomDropdown'
+import React from 'react';
+import {StyleSheet, useWindowDimensions, View} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
+import CustomText from '../components/atoms/CustomText';
+import SafeFlatList from '../components/atoms/SafeFlatList';
+import SearchBar from '../components/molecules/SearchBar';
+import CustomDropdown from '../components/organisms/CustomDropdown';
+import EventCard from '../components/organisms/EventCard';
+import ScreenBoiler from '../components/skeleton/ScreenBoiler';
+import {colors} from '../theme/colors';
+import {fonts} from '../theme/font';
 
 const EventScreen = () => {
-  const { width, height } = useWindowDimensions('window');
+  const {width, height} = useWindowDimensions('window');
   return (
     <ScreenBoiler
-    scrollEnabled
-    >
-      <MainHeader />
+      scrollEnabled
+      containerStyle={{
+        paddingHorizontal: moderateScale(5, 0.3),
+      }}>
       <View style={styles?.titleContainer}>
         <CustomText style={styles?.title}>Events</CustomText>
         <CustomDropdown
@@ -25,18 +26,19 @@ const EventScreen = () => {
             borderRadius: moderateScale(50, 0.3),
             paddingVertical: moderateScale(10, 0.3),
           }}
-          placeholder={'Select'} />
-
+          placeholder={'Select'}
+        />
       </View>
       <SearchBar />
-      <FlatList
+      <SafeFlatList
         data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
         contentContainerStyle={styles?.scrollContainer}
-        renderItem={() => <EventCard />}
+        renderItem={({item, index}) => <EventCard />}
+        keyExtractor={(item, index) => `event_${index}`}
       />
     </ScreenBoiler>
-  )
-}
+  );
+};
 
 const styles = StyleSheet?.create({
   scrollContainer: {
@@ -48,15 +50,14 @@ const styles = StyleSheet?.create({
     fontSize: moderateScale(24, 0.3),
     fontFamily: fonts?.medium,
     color: colors?.themeBlack,
-    flex: 1,
   },
   titleContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: moderateScale(12, 0.3),
+    marginVertical: moderateScale(12, 0.3),
     width: '100%',
-  }
-})
+  },
+});
 
-export default EventScreen
+export default EventScreen;
