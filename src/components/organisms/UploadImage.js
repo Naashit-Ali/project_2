@@ -11,7 +11,7 @@ const UploadImage = () => {
     return (
         <View style={styles?.container}>
             <CustomImage
-                source={Images?.exit}
+                source={Images?.uploadIcon}
                 tintColor={colors?.black}
                 style={{
                     width: moderateScale(35, 0.3),
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     container: {
         width: '100%',
         height: moderateScale(200, 0.3),
-        backgroundColor: colors?.grayV3,
+        backgroundColor: colors?.lightGrayV3,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: moderateScale(12, 0.3),

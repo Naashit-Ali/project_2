@@ -889,7 +889,7 @@ const styles = StyleSheet.create({
     color: colors?.themeBlack,
   },
   agePickerContainer: {
-    height: 480 ,
+    height: 400 ,
     position: 'relative',
     justifyContent: 'center',
     alignItems: 'center',

@@ -28,7 +28,7 @@ const ScreenBoiler = ({
   headerOneStyle = {},
   showHeader = true,
   hidden = false,
-  barStyle = 'light-content',
+  barStyle = 'dark-content',
 }) => {
   const Wrapper = backgroundImage ? ImageBackground : View;
 

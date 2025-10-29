@@ -31,7 +31,7 @@ const CustomDrawerContent = props => {
     },
       {
       label: 'Fitness Goal',
-      icon: Images?.progress,
+      icon: Images?.fitnessGoal,
       route: 'MyProgressScreen',
     },
       {
@@ -41,7 +41,7 @@ const CustomDrawerContent = props => {
     },
     {
       label: 'Settings',
-      icon: Images?.progress,
+      icon: Images?.settingIcon2,
       route: 'ProfileScreen',
     },
 

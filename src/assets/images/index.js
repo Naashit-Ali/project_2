@@ -57,6 +57,10 @@ const Images = {
   chatBubble: require('./chatBubble.png'),
   indicator: require('./indicator.png'),
   body : require('./body.png'),
+  privacyIcon : require('./privacyIcon.png'),
+  settingIcon2 : require('./settingIcon.png'),
+  fitnessGoal : require('./fitnessGoal.png'),
+  uploadIcon : require('./uploadIcon.png'),
 };
 
 export default Images;

@@ -15,6 +15,7 @@ export const colors = {
    grayV3:'#E3DDCB',
    lightGray:'#9492A0',
    lightGrayV2:'#E9E5EE',
+   lightGrayV3:'#F4F3ED',
    green:'#4CAF50',
    greenV2:'#64A30E',
    success:'#48DC4D',

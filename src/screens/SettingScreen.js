@@ -69,7 +69,7 @@ const SettingScreen = () => {
       <View style={styles?.container}>
         <CustomText style={styles?.text}>Other</CustomText>
 
-        <TabView label={'Privacy Policy'} image={Images?.password} />
+        <TabView label={'Privacy Policy'} image={Images?.privacyIcon} />
         <TabView label={'Change Password'} image={Images?.password} />
         <TabView label={'Delete Account'} image={Images?.delete} />
         <TabView label={'Logout'} image={Images?.exit} />
