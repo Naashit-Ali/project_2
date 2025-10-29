@@ -55,7 +55,8 @@ const Images = {
   saved: require('./saved.png'),
   banner: require('./banner.png'),
   chatBubble: require('./chatBubble.png'),
-  indicator: require('./indicator.png')
+  indicator: require('./indicator.png'),
+  body : require('./body.png'),
 };
 
 export default Images;

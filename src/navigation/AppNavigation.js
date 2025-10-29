@@ -9,12 +9,12 @@ import ProfileSetupScreen from '../screens/ProfileSetupScreen';
 import DrawerNavigation from './DrawerNavigation';
 import MealDetail from '../screens/MealDetail';
 import SubscriptionScreen from '../screens/SubscriptionScreen';
-// import InfoSteps from '../../InfoSteps';
 import WorkoutDetailScreen from '../screens/WorkoutDetailScreen';
 import MindsetDetailScreen from '../screens/MindsetDetailScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import EventDetailScreen from '../screens/EventDetailScreen';
 import DemoScreen from '../screens/DemoScreen';
+import InfoSteps from '../screens/InfoSteps';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,7 +22,7 @@ const AppNavigation = () => {
   return (
     <NavigationContainer ref={NavigationService.navigationRef}>
       <Stack.Navigator
-        initialRouteName="DrawerNavigation"
+        initialRouteName="SplashScreen"
         screenOptions={{
           headerShown: false,
         }}>
@@ -31,7 +31,7 @@ const AppNavigation = () => {
         <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
         <Stack.Screen name="ProfileSetupScreen" component={ProfileSetupScreen} />
-        {/* <Stack.Screen name="InfoSteps" component={InfoSteps} /> */}
+        <Stack.Screen name="InfoSteps" component={InfoSteps} />
         <Stack.Screen name="SubscriptionScreen" component={SubscriptionScreen} />
 
         {/* Main App - Drawer Navigator containing BottomTabs */}
